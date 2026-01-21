@@ -14,7 +14,7 @@
 4. 任何未经许可的盗用行为，制作组保留追究其法律责任及公开维权的权利。
 
 **Project:** [轮回百世·与秋同归]
-**Developers:** @灰灰(程序), @数据(美术), @rosy(脚本), @星河妄想(脚本), @设定(监制)
+**Developers:** @灰灰(程序/脚本), @数据(美术)
 
 ---
 
@@ -30,4 +30,4 @@
 4. The production team reserves the right to pursue legal liability and public rights protection for any unauthorized misappropriation.
 
 **Project:** [The Tragedy Caused by Fake Medicine from An Ding Peak]
-**Developers:** @灰灰(Program), @数据(Art), @rosy(Script), @星河妄想(Script), @设定(Producer)
+**Developers:** @灰灰(Program/Script), @数据(Art)
