@@ -35,9 +35,9 @@
 
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>轮回百世·与秋同归</title>
-    <meta name="description" content="轮回百世，只为与其同归。沈清秋与岳清源的重生故事。">
-    <meta name="keywords" content="视觉小说,修仙,岳清源,沈清秋,轮回,重生">
+    <title>掌门他养了只小沈九</title>
+    <meta name="description" content="掌门他养了只小沈九。沈清秋与岳清源的重生故事。">
+    <meta name="keywords" content="视觉小说,修仙,岳清源,沈清秋,轮回,重生,小沈九">
     <meta name="author" content="岳清源沈清秋结婚推进协会">
 
     <!-- Favicon -->
@@ -47,16 +47,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://github.com/HuihuiDreams/qijiugame-formal">
-    <meta property="og:title" content="轮回百世·与秋同归">
-    <meta property="og:description" content="轮回百世，只为与其同归。沈清秋与岳清源的重生故事。">
+    <meta property="og:title" content="掌门他养了只小沈九">
+    <meta property="og:description" content="掌门他养了只小沈九。沈清秋与岳清源的重生故事。">
     <meta property="og:image" content="./start_screen.png">
     <meta property="og:locale" content="zh_CN">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://github.com/HuihuiDreams/qijiugame-formal">
-    <meta name="twitter:title" content="轮回百世·与秋同归">
-    <meta name="twitter:description" content="轮回百世，只为与其同归。沈清秋与岳清源的重生故事。">
+    <meta name="twitter:title" content="掌门他养了只小沈九">
+    <meta name="twitter:description" content="掌门他养了只小沈九。沈清秋与岳清源的重生故事。">
     <meta name="twitter:image" content="./start_screen.png">
 
     <!-- Additional SEO -->
@@ -64,7 +64,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="轮回百世·与秋同归">
+    <meta name="apple-mobile-web-app-title" content="掌门他养了只小沈九">
     <!-- Tailwind CSS - 版本锁定为 3.4.1 -->
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
     <style>
@@ -476,7 +476,7 @@
 
                         try {
                             const keys = Object.keys(localStorage)
-                                .filter(k => k.startsWith('qijiu_save_slot_'))
+                                .filter(k => k.startsWith('xiaoshenjiu_save_slot_'))
                                 .map(k => {
                                     try {
                                         const itemData = JSON.parse(localStorage.getItem(k));
@@ -548,12 +548,12 @@
 
             // localStorage 存储键名 (使用游戏唯一标识符前缀，避免与其他游戏冲突)
             STORAGE_KEYS: {
-                AUTO_SAVE: 'lunhui_auto_save',
-                SAVE_SLOT_PREFIX: 'lunhui_save_slot_',
-                READ_TEXT: 'lunhui_read_text',
-                UNLOCKED_ENDINGS: 'lunhui_unlocked_endings',
-                UNLOCKED_CHAPTERS: 'lunhui_unlocked_chapters',
-                SETTINGS: 'lunhui_settings'
+                AUTO_SAVE: 'xiaoshenjiu_auto_save',
+                SAVE_SLOT_PREFIX: 'xiaoshenjiu_save_slot_',
+                READ_TEXT: 'xiaoshenjiu_read_text',
+                UNLOCKED_ENDINGS: 'xiaoshenjiu_unlocked_endings',
+                UNLOCKED_CHAPTERS: 'xiaoshenjiu_unlocked_chapters',
+                SETTINGS: 'xiaoshenjiu_settings'
             },
 
             // 动画持续时间（毫秒）
@@ -576,7 +576,12 @@
                 qingjing_night: './qingjingpeaknight.png',
                 system_space: './black.png', // Pure black background image
                 start: './start_screen.png', // Original start screen
-                kiss: './ending_b.png'
+                kiss: './ending_b.png',
+                lingxicave: './lingxicave.jpg',
+                bedroom: './bedroom.jpg',
+                ruin: './ruin.jpg',
+                nuanhongge: './nuanhongge.jpg',
+                bamboo_night: './bamboonight.jpg'
             },
             char: {
                 sqq: {
@@ -601,104 +606,313 @@
             }
         };
 
-        // --- 剧本数据 (Structure Refined) ---
+        // --- 剧本数据 (Lingxi Old Dreams) ---
         const SCENES = {
-            'chapter0': {
+            // --- 第一章：灵犀旧梦 ---
+            'chapter1_start': {
                 lines: [
-                    { speaker: '背景', text: "沈九被赐名沈清秋，成为清静峰首席当天。", mood: 'cold', bg: ASSETS.bg.qingjing_night },
-                    { speaker: '旁白', text: "是夜。沈清秋终于忙完了，回到自己住处，却看见了此生无比厌烦的人——岳清源。", mood: 'narrative' },
-                    { speaker: '旁白', text: "沈清秋直接忽视他，绕行想进屋舍休息，忙了一天，他很累。", mood: 'narrative' },
-                    { speaker: '旁白', text: "两人即将擦肩而过时，岳清源扯住了他的手腕，沈清秋一顿，皱眉。", mood: 'narrative' },
-                    { speaker: '沈清秋', text: "放开！恶心。", mood: 'repulsive' },
-                    { speaker: '岳清源', text: "小九，我们一定要这样吗？", mood: 'perplexed' },
-                    { speaker: '沈清秋', text: "是清秋！！（语气沉沉）我们应该怎样？岳清源，我们只能这样……", mood: 'angry' },
-                    { speaker: '系统', text: "进入强制歧路，加载中……", mood: 'system', shake: true }
+                    { speaker: '旁白', text: "【第一章：灵犀旧梦】", mood: 'narrative', bg: ASSETS.bg.lingxicave },
+                    { speaker: '旁白', text: "岳清源许久没来灵犀洞了。在他自以为入定后，他便突然失去了意识。", mood: 'narrative', bg: ASSETS.bg.lingxicave },
+                    { speaker: '旁白', text: "当他醒来时，第一个察觉的不是周身尚未平复的灵力震荡，而是空落落的掌心。", mood: 'narrative' },
+                    { speaker: '旁白', text: "他下意识去握玄肃剑柄，指尖却只触到冰凉的金属——剑柄末端，那枚伴随他数十年的青玉穗子，不见了。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（内心）（心头莫名一沉）那并非什么了不得的法器，只是初入山门时师尊所赐，嘱我“守心凝神”……", mood: 'worried' },
+                    { speaker: '岳清源', text: "（内心）后来剑穗旧了，我也未曾更换…… 它是我在无数个难以入定的夜晚，唯一能锚定心神的实物。", mood: 'worried' },
+                    { speaker: '旁白', text: "他起身四顾，强大的神识扫过幽深洞府，终于在角落寻到了一团微弱的光芒。那光晕朦朦胧胧，却散发着他异常熟悉的气息——那是他自己灵力与心绪长久浸染留下的印记。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（呼吸骤停）这种熟悉感……", mood: 'shocked' },
+                    { speaker: '旁白', text: "岳清源缓步靠近，每一步都踏在鼓动的心跳上。他半跪下来，迟疑地伸出手，指尖尚未触及，那光晕便如有所感，轻轻摇曳着，向他靠近了几分。 光芒渐散。 ", mood: 'narrative' },
+                    { speaker: '旁白', text: "露出一张他曾在心底描摹过千万次，却早已模糊在岁月尘埃里的面容。孩童约莫八九岁年纪，身形瘦小，唯独一双眼睛清亮得惊人，正带着几分懵懂和天然的依赖，静静望着他。", mood: 'narrative' },
+                    { speaker: '旁白', text: "那是沈九。是尚未被赐名“清秋”，尚未经历后来种种磨折的……小九。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（僵在原地，喉咙干涩） ……", mood: 'surprised' },
+                    { speaker: '小沈九（玉灵）', text: "……七哥？", mood: 'neutral' },
+                    { speaker: '旁白', text: "这一声，如同惊雷，狠狠劈在岳清源的神魂之上。他猛地向后踉跄半步，撞上冰冷的石壁，才勉强稳住身形。 胸腔里翻涌着难以名状的剧痛与荒谬，眼前阵阵发黑。", mood: 'narrative', shake: true },
+                    { speaker: '岳清源', text: "（内心）是我疯了？还是心魔已深重至此，竟幻化出如此……不堪一击的妄念？", mood: 'shocked' },
+                    { speaker: '旁白', text: "玉灵见他神色痛苦，怯生生地向前飘了半步，小手停在半空。", mood: 'narrative' },
+                    { speaker: '小沈九（玉灵）', text: "（声音更轻，纯粹的担忧）七哥，你……不舒服吗？", mood: 'worried' },
+                    { speaker: '岳清源', text: "（深吸一口冷气，强迫自己冷静）我……无事。", mood: 'pain' }
                 ],
-                next: 'path_a_title'
+                next: 'chapter1_choice'
             },
-            'path_a_title': {
+            'chapter1_choice': {
+                type: 'choice',
+                question: '如何安置这个孩子？',
+                options: [
+                    { text: 'A. 询问来历', next: 'chapter1_ask' },
+                    { text: 'B. 给予信物', next: 'chapter1_token' }
+                ]
+            },
+            'chapter1_ask': {
+                lines: [
+                    { speaker: '岳清源', text: "你……究竟是何物？为何会有这般模样？", mood: 'perplexed', bg: ASSETS.bg.lingxicave },
+                    { speaker: '小沈九（玉灵）', text: "（歪了歪头）七哥不记得我了吗？我是小九呀。", mood: 'neutral' },
+                    { speaker: '旁白', text: "岳清源看着他无辜的眼神，心中的防线终究是溃败了。", mood: 'narrative' }
+                ],
+                next: 'chapter1_token'
+            },
+            'chapter1_token': {
+                lines: [
+                    { speaker: '旁白', text: "他不敢问“你是谁”，也不敢去想这究竟是何等诡异的因果。目光落在孩童虚幻的身体上，岳清源解下了自己玄肃剑上仅存的那截旧穗绳——那曾是系着守心玉的绳子，同样浸染着他的气息。", mood: 'narrative', bg: ASSETS.bg.lingxicave },
+                    { speaker: '岳清源', text: "这个，给你。暂且……栖身之用。", mood: 'gentle' },
+                    { speaker: '小沈九（玉灵）', text: "（低头看了看，抬头露出毫无阴霾的笑）谢谢七哥。", mood: 'flush' },
+                    { speaker: '岳清源', text: "（心口一窒，移开目光不敢再看）……", mood: 'pain' }
+                ],
+                next: 'chapter2_start'
+            },
+
+            // --- 第二章：偷来的时光 ---
+            'chapter2_start': {
+                lines: [
+                    { speaker: '旁白', text: "【第二章：偷来的时光】", mood: 'narrative', bg: ASSETS.bg.bedroom },
+                    { speaker: '旁白', text: "岳清源将这自玉而生的“小九”带回了穹顶峰，安置在寝殿深处。唯有在更深人静、连星光都沉寂之时，他才会撤去禁制，看着那团小小的光影。 偶尔，那玉灵会凑到他身边，安静地陪着他处理仿佛永远也批阅不完的卷宗。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（对着光团低声絮语）今日……又在清静峰外站了半晌。他大约是……极不愿见我的。", mood: 'sorrow' },
+                    { speaker: '岳清源', text: "灵犀洞旧伤……无妨，莫要声张。", mood: 'sorrow' },
+                    { speaker: '岳清源', text: "若当初……", mood: 'sorrow' },
+                    { speaker: '旁白', text: "他总是在最关键处戛然而止，将所有未尽的言语、沉重的悔痛，都咽回心底最深的地方。 而那玉灵只是静静听着，仿佛听懂了他所有的未尽之言。", mood: 'narrative' },
+                    { speaker: '旁白', text: "岳清源于定中惊醒，快步走入内室。 只见往日柔和的光晕此刻大盛，几乎盈满整个房间。", mood: 'narrative' },
+                    { speaker: '旁白', text: "光芒中心，那孩童的身影彻底凝实——眉眼清晰，肌肤温热，甚至连呼吸都变得绵长安稳。 他真正地“化形”了。 不再是缥缈的光影，而是一个活生生的，幼年沈九。", mood: 'narrative' },
+                    { speaker: '旁白', text: "这段偷来的时光，你想如何度过？", mood: 'system' }
+                ],
+                next: 'chapter2_choice'
+            },
+            'chapter2_choice': {
+                type: 'choice',
+                question: '如何度过这段时光？',
+                options: [
+                    { text: '下山买一包麦芽糖', next: 'chapter2_candy' },
+                    { text: '为他梳理头发', next: 'chapter2_comb' },
+                    { text: '手把手教他写字', next: 'chapter2_write' }
+                ]
+            },
+            'chapter2_candy': {
+                lines: [
+                    { speaker: '旁白', text: "岳清源特意绕到了山下的城镇，带回了一包最简单的麦芽糖。", mood: 'narrative', bg: ASSETS.bg.bedroom },
+                    { speaker: '岳清源', text: "（将糖递过去，声音温和）给你。", mood: 'gentle' },
+                    { speaker: '小沈九', text: "谢谢七哥，好甜。", mood: 'flush' },
+                    { speaker: '岳清源', text: "（看着笑容，心口微滞）……甜就好。", mood: 'gentle' }
+                ],
+                next: 'chapter3_start'
+            },
+            'chapter2_comb': {
+                lines: [
+                    { speaker: '旁白', text: "岳清源拿出了一把温润的木梳。小玉灵乖乖地坐在铜镜前，垂着细软的头发。", mood: 'narrative', bg: ASSETS.bg.bedroom },
+                    { speaker: '岳清源', text: "（动作极其轻柔，生怕弄疼了他）别动，有些打结了。", mood: 'gentle' },
+                    { speaker: '小沈九', text: "（乖巧地坐着一动不动）七哥的手法真好……像是经常为人束发一般。", mood: 'neutral' },
+                    { speaker: '岳清源', text: "（低声喃喃）是啊……以前，我总想着以后要日日为你梳发的。", mood: 'sorrow' }
+                ],
+                next: 'chapter3_start'
+            },
+            'chapter2_write': {
+                lines: [
+                    { speaker: '旁白', text: "岳清源铺开宣纸，将那孩子抱在膝头，握着他小小的手。 笔尖饱蘸浓墨，落在纸上。", mood: 'narrative', bg: ASSETS.bg.bedroom },
+                    { speaker: '岳清源', text: "这两个字，你要记好。这是“七”，这是“九”。", mood: 'gentle' },
+                    { speaker: '小沈九', text: "（学得很认真，侧头看他） 七……九…… 七哥，这两个字为什么要挨得这么近？", mood: 'curious' },
+                    { speaker: '岳清源', text: "（握着他的手微微一紧，声音沙哑）因为……他们本就不该分开。", mood: 'sorrow' }
+                ],
+                next: 'chapter3_start'
+            },
+
+            // --- 第三章：残忍的对峙 ---
+            'chapter3_start': {
+                lines: [
+                    { speaker: '旁白', text: "【第三章：残忍对峙】", mood: 'narrative', bg: ASSETS.bg.bedroom },
+                    { speaker: '旁白', text: "温这些短暂的、偷来的温情，像一点点微弱的火苗，试图驱散岳清源心头的寒意。 却也映照出他内心深处更大的空洞—— 他所做的这一切，这个依赖着他、会对他笑的孩子，终究只是一个幻影。", mood: 'narrative' },
+                    { speaker: '旁白', text: "结界波动！", mood: 'narrative', shake: true },
+                    { speaker: '岳清源', text: "（脸色骤变）这股气息……是清秋！怎么会在这个时辰……？", mood: 'shocked' },
+                    { speaker: '旁白', text: "岳清源试图施法藏起小玉灵，但门已被推开。", mood: 'narrative' },
+                    { speaker: '旁白', text: "沈清秋一身竹青常服，倚在门框上，眉眼间带着他惯有的、三分讥诮七分冷淡的神情。 他的目光懒洋洋地扫过室内，先是落在岳清源慌乱的脸上，随即，定格在了软榻上那个刚刚揉着眼睛坐起来的孩子身上。", mood: 'narrative' },
+                    { speaker: '旁白', text: "时间仿佛凝固。沈清秋嘴角那点惯有的弧度瞬间冻结，然后，一点点剥落，消失殆尽。 他站直了身体，目光先是死死钉在那孩子的脸上，然后，缓缓移向面色苍白的岳清源。", mood: 'narrative' },
+                    { speaker: '沈清秋', text: "岳清源……你可真是，出息了。", mood: 'disdain' },
+                    { speaker: '岳清源', text: "（下意识护住玉灵）你听我解释……", mood: 'worried' },
+                    { speaker: '沈清秋', text: "（打断，一步步逼近） 解释？ 解释你如何寻来这与我幼时一般无二的傀儡？还是解释你岳大掌门，何时有了这般……睹物思人的雅兴？", mood: 'angry' },
+                    { speaker: '岳清源', text: "（不是傀儡！他是……是我剑穗上的守心玉所化，因常年沾染我的……", mood: 'worried' },
+                    { speaker: '沈清秋', text: "（厉声喝断） 够了！ 守心玉？呵。好一个守心玉！ 岳清源，你对着一个死物倾诉衷肠，造出这么个玩意，是觉得现在的我，不配承你这份愧疚，还是不像你记忆里那个……好拿捏的“小九”了？！", mood: 'angry' },
+                    { speaker: '旁白', text: "这话太过尖锐，连那懵懂的玉灵都瑟缩了一下。", mood: 'narrative' },
+                    { speaker: '小沈九', text: "（壮起胆子，奶凶）你不要凶七哥！", mood: 'angry' },
+                    { speaker: '沈清秋', text: "（猛地看向孩子，眼神狠厉）闭嘴。凭你也配用这张脸？", mood: 'angry' },
+                    { speaker: '旁白', text: "沈清秋的强烈灵力威压爆发，直指玉灵。", mood: 'narrative', shake: true }
+                ],
+                next: 'chapter3_choice'
+            },
+            'chapter3_choice': {
+                type: 'choice',
+                question: '危急时刻，你的选择是？',
+                options: [
+                    { text: '用言语劝阻', next: 'ending_be1' },
+                    { text: '以身相护', next: 'chapter4_start' }
+                ]
+            },
+
+            // --- BE 1: 碎玉难圆 ---
+            'ending_be1': {
+                lines: [
+                    { speaker: '旁白', text: "沈清秋的怒火化作实质的灵力威压，直指那脆弱的玉灵。 在那一瞬间，岳清源下意识地想要开口解释，想要告诉小九这并非什么“替身”的戏码。", mood: 'narrative', shake: true },
+                    { speaker: '岳清源', text: "（急切地伸出手，却未动身） 清秋！不是你想的那样！他是……", mood: 'worried' },
+                    //{ speaker: '旁白', text: "【音效：清脆的碎裂声，如同琉璃崩塌】", mood: 'narrative', shake: true },
+                    { speaker: '旁白', text: "迟疑的瞬间，便是永恒的遗憾。 那刚刚化形、本就根基不稳的孩童，根本承受不住清静峰主含怒的一击。 甚至来不及发出一声呼救。", mood: 'narrative' },
+                    { speaker: '小沈九', text: "（惊恐地睁大眼，身体瞬间布满裂纹）七……哥……？", mood: 'pain', shake: true },
+                    //{ speaker: '旁白', text: "【特效：光芒炸裂，化作无数粉尘消散】", mood: 'narrative', shake: true },
+                    { speaker: '岳清源', text: "（瞳孔骤缩，伸手去抓，却只抓住了满手虚无的流光） 不！！", mood: 'shocked' },
+                    { speaker: '旁白', text: "寝殿内重归死寂。 那条系在孩子手腕上的旧穗绳，“啪嗒”一声掉落在地上。", mood: 'narrative' },
+                    { speaker: '沈清秋', text: "（看着那消散的光点，眼中闪过一丝错愕，随即被更深的厌恶覆盖） 呵，岳清源，当年连个活生生的都护不住。如今护着个死物又作甚？", mood: 'cold' },
+                    { speaker: '岳清源', text: "（跪在地上，捡起那根穗绳，浑身颤抖）碎了……", mood: 'despair' },
+                    { speaker: '沈清秋', text: "（冷冷地看着他颓唐的模样，只觉得讽刺至极）岳掌门也好自为之。这种自我感动的戏码，别再让我看见第二次！", mood: 'cold' },
+                    { speaker: '旁白', text: "沈清秋拂袖而去，决绝得没有一丝留恋。", mood: 'narrative' }
+                ],
+                next: 'ending_be1_screen'
+            },
+            'ending_be1_screen': {
                 type: 'ending',
-                title: '强制歧路甲',
-                subtitle: '竹柏剑穗',
-                bg: ASSETS.bg.qingjing_night,
-                next: 'path_a'
+                title: '【BE：碎玉难圆】',
+                //subtitle: 'Broken Jade',
+                text: "有些东西一旦错过了，就再也拼不回去了。",
+                bg: ASSETS.bg.system_space // Dark/Sad BG
             },
-            'path_a': {
+
+            // --- 第四章：玉碎魂归 ---
+            'chapter4_start': {
                 lines: [
-                    { speaker: '旁白', text: "岳清源松开了沈清秋的手，对方像触及瘟神般，立即抽身离开。", mood: 'narrative' },
-                    { speaker: '旁白', text: "岳清源被拒之门外，神情很是颓然，将准备好的首席弟子礼从怀中取出——竹柏剑穗放在沈清秋的屋门口驻足许久才有离开之举。", mood: 'narrative' },
-                    { speaker: '旁白', text: "沈清秋在门外彻底没动静后，思绪烦乱，只觉得岳清源真是有病，平白无故扰人清修，打开门，想把那物件扔的远远的，却发现人并没有走，离竹舍十几步远。", mood: 'narrative' },
-                    { speaker: '旁白', text: "两人看见对方都是一愣，十几步好似就是他们一生都无法跨越的距离。", mood: 'narrative' },
-                    { speaker: '系统', text: "【警告】检测到情感拼图缺失。因果链条重构中……强制进入另一段“真实”。", mood: 'system', shake: true }
+                    { speaker: '旁白', text: "【第四章：玉碎魂归】", mood: 'narrative', bg: ASSETS.bg.bedroom },
+                    { speaker: '旁白', text: "岳清源侧身完全挡在玉灵身前，玄肃剑气自主护体，与沈清秋的威压撞在一起！", mood: 'narrative', shake: true },
+                    { speaker: '旁白', text: "寝殿内的摆设嗡嗡作响。 沈清秋看着毫不犹豫挡在“替身”面前的岳清源，看着他眼中那不容置疑的维护，忽然觉得一切都荒谬得可笑。 他所有的不甘、所有的怨恨，在此刻仿佛都成了笑话。 他敛去了所有外露的情绪，只剩下一种深可见骨的疲惫与冰凉。", mood: 'narrative' },
+                    { speaker: '沈清秋', text: "（语气平静得可怕）很好。", mood: 'cold' },
+                    { speaker: '岳清源', text: "清秋！", mood: 'worried' },
+                    { speaker: '小沈九', text: "(抓住岳清源的衣角)七哥……别走……我害怕……", mood: 'scared' },
+                    { speaker: '旁白', text: "沈清秋的身影消失在夜色中。那句冰冷的“很好”如同冰锥，反复刺穿岳清源的心脏。", mood: 'narrative' },
+                    { speaker: '旁白', text: "接下来的日子，清静峰闭峰不出。岳清源陷入了更深的沉默。 而那个由他执念化生的玉灵，却因他的痛苦而愈发虚弱。 直到这一次，岳清源再次从清静峰无功而返，心神激荡至极致。", mood: 'narrative' },
+                    { speaker: '旁白', text: "玉灵周身光芒疯狂闪烁，穗绳发出灼热红光！", mood: 'narrative' },
+                    { speaker: '岳清源', text: "停下！", mood: 'anxious' },
+                    { speaker: '小沈九', text: "（声音细弱游丝）七哥……他……很难过……你去找他……", mood: 'calm' },
+                    { speaker: '旁白', text: "玉灵崩散，化作漫天光点，汇聚成光河冲向清静峰！", mood: 'narrative' },
+                    { speaker: '岳清源', text: "不！", mood: 'despair' }
+
                 ],
-                next: 'path_b_title'
+                next: 'chapter5_start'
             },
-            'path_b_title': {
+
+            // --- 第五章：记忆的潮汐 ---
+            'chapter5_start': {
+                lines: [
+                    { speaker: '旁白', text: "【第五章：记忆的潮汐】", mood: 'narrative', bg: ASSETS.bg.bamboo_night },
+                    { speaker: '旁白', text: "岳清源冲进竹舍，抱起昏迷的沈清秋。 当他的灵力探入，便仿佛闯入了一片正在经历风暴的灵魂海洋——那里充斥着属于他岳清源的数十年的记忆与情感，正毫不留情地冲击着沈清秋的神魂。", mood: 'narrative', },
+                    { speaker: '岳清源', text: "【记忆】放我出去……我和小九约好了……我要去救他……", mood: 'pain', bg: ASSETS.bg.lingxicave },
+                    { speaker: '岳清源', text: "【记忆】（摩挲着守心玉）对不起……我很想你。", mood: 'sorrow', bg: ASSETS.bg.bedroom },
+                    { speaker: '旁白', text: "一天一夜。沈清秋一直深陷昏迷。他无意识地攥紧了被褥，唇齿间溢出痛苦的呓语。", mood: 'narrative', bg: ASSETS.bg.bamboo_night },
+                    { speaker: '沈清秋', text: "（梦呓）（哭腔）七哥……你怎么……还没来…… 我好……疼……", mood: 'pain' },
+                    { speaker: '旁白', text: "声音轻若蚊蚋，却像一把最锋利的匕首，瞬间刺穿了岳清源的心脏！ 那分明是在他离开之后，小九独自一人在秋府挣扎时，最深的绝望！", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（握住那冰凉的手，贴在额前，泪如雨下）我在……小九，七哥在这里……对不起……对不起……", mood: 'pain' }
+                ],
+                next: 'chapter6_start'
+            },
+
+            // --- 第六章：迟来的问候 ---
+            'chapter6_start': {
+                lines: [
+                    { speaker: '旁白', text: "【第六章：迟来的问候】", mood: 'narrative', bg: ASSETS.bg.bamboo_night },
+                    { speaker: '旁白', text: "沈清秋是在一种死寂的安宁中恢复意识的。 他缓缓睁开眼，看到了守在榻边、面色灰败鬓角染霜的岳清源。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（浑身猛地一颤，眼中爆发出狂喜与小心翼翼） ……小九？", mood: 'shocked' },
+                    { speaker: '旁白', text: "沈清秋静静地看着他。 太荒谬了。太沉重了。 他恨了一生，怨了一世，将这个人视作背信弃义的懦夫。可真相却是，这个懦夫为了能更快地回去救他，选了一条最激进的路，结果走火入魔，被废去一切，在灵犀洞里被困了整整一年。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（见他久久不语，眼中的光芒黯淡下去，狼狈地移开视线） 你……你醒了就好。好好休息。", mood: 'sorrow' },
+                    { speaker: '旁白', text: "岳清源想抽身离开，仿佛多待一刻都是亵渎。沈清秋却重新闭上了眼睛。", mood: 'narrative' },
+                    { speaker: '旁白', text: "时间流逝，又过了三日。", mood: 'narrative' },
+                    { speaker: '旁白', text: "第三日的深夜，岳清源终于撑不住，倚在榻边陷入昏睡。 沈清秋在黑暗中睁开了眼。他看着那个伏在床边、狼狈不堪的男人。 那不再是高高在上的掌门，只是一个被愧疚折磨了几十年的可怜人。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（梦呓） ……好痛……", mood: 'pain' },
+                    { speaker: '旁白', text: "沈清秋慢慢坐了起来。岳清源惊醒。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "（慌乱） 我……我吵醒你了？你是不是要喝水？", mood: 'worried' },
+                    { speaker: '沈清秋', text: "（声音沙哑，像从砂纸上磨过） 灵犀洞……", mood: 'neutral' },
+                    { speaker: '岳清源', text: "（僵住） ……！", mood: 'shocked' }
+                ],
+                next: 'chapter6_choice'
+            },
+            'chapter6_choice': {
+                type: 'choice',
+                question: '沈清秋的反应？',
+                options: [
+                    { text: '侧过身去，沉默不语', next: 'ending_be2' },
+                    { text: '询问以命入剑伤痛', next: 'ending_he' }
+                ]
+            },
+
+            // --- BE 2: 咫尺天涯 ---
+            'ending_be2': {
+                lines: [
+                    { speaker: '旁白', text: "那句“很疼吗”在喉咙里滚了一圈，最终未能出口。", mood: 'narrative', bg: ASSETS.bg.bamboo_night },
+                    { speaker: '沈清秋', text: "（冷硬地）你出去吧。", mood: 'cold' },
+                    { speaker: '岳清源', text: "好……", mood: 'dead' },
+                    { speaker: '旁白', text: "门被轻轻关上，便再也没有打开过。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "真相大白。可我们之间，终究是回不去了。", mood: 'sorrow' }
+                ],
+                next: 'ending_be2_screen'
+            },
+            'ending_be2_screen': {
                 type: 'ending',
-                title: '强制歧路乙',
-                subtitle: '岳清源的疯狂',
-                bg: ASSETS.bg.qingjing_night,
-                next: 'path_b'
+                title: '【BE：咫尺天涯】',
+                //subtitle: 'Close Yet Far',
+                text: "所有的误会都解开了，可那两颗想要靠近的心，却在漫长的岁月和最后的沉默中，彻底冷透了。",
+                bg: ASSETS.bg.qingjing_night
             },
-            'path_b': {
+
+            // --- HE: 守得云开 ---
+            'ending_he': {
                 lines: [
-                    { speaker: '旁白', text: "岳清源的手指收得更紧，没有丝毫松手的架势。", mood: 'narrative' },
-                    { speaker: '旁白', text: "沈清秋猛地挣动，却在对方稍稍卸力的瞬间猝不及防地向前一倾，就这失力空隙，便被他身后人死死将他箍进了怀里。", mood: 'narrative' },
-                    { speaker: '旁白', text: "沈清秋扭转身体手肘狠狠向后撞去，用了十足劲在挣开的刹那反手一掌掴在对方脸上。脆响过后，四下陡然死寂。", mood: 'narrative' },
-                    { speaker: '旁白', text: "岳清源偏着脸，转过头来脸上笑得明朗。两人对视，沈清秋默默将刚动过人的手收到背后紧握成拳，他知道那一下太重，但事已至此已经不好再说什么，只得相顾无言。", mood: 'narrative' },
-                    { speaker: '旁白', text: "想离开刚又动作，下一秒，沉浑的灵力铺天盖地压来，将沈清秋所有的动作与话音都锁在原地。", mood: 'narrative' },
-                    { speaker: '旁白', text: "沈清秋被这股力道压得向后一仰，岳清源便趁机将人拥入怀中，扣住他的后颈，重重吻了上去。", mood: 'narrative', bg: ASSETS.bg.kiss },
-                    { speaker: '旁白', text: "这亲吻堵住了，那张从不服软的嘴，也堵住了自己喉间几欲冲出的辩解与苦衷。", mood: 'narrative' },
-                    { speaker: '旁白', text: "气息交缠间只剩下急促的闷响，像困兽的挣扎。岳清源闭着眼想，错过了这一次，下一次还能不能握得住他？", mood: 'narrative' }
+                    { speaker: '沈清秋', text: "……很疼吗？", mood: 'soft', bg: ASSETS.bg.bamboo_night },
+                    { speaker: '旁白', text: "岳清源猛地睁大了眼。 他想过沈清秋会质问，会怒骂。他唯独没有想过，沈清秋会问他……疼不疼。 这一句，击溃了他全部的防线。那不是审判，而是一丝……怜悯。", mood: 'narrative', shake: true },
+                    { speaker: '岳清源', text: "（嘴唇颤抖，无法回答，只能仓促低下头，将脸埋入掌心，无声恸哭）", mood: 'pain' },
+                    { speaker: '旁白', text: "沈清秋缓缓抬起手，在半空停顿许久，最终，落在了岳清源的头顶。", mood: 'narrative' },
+                    { speaker: '沈清秋', text: "别哭了……吵死了。", mood: 'soft' },
+                    { speaker: '旁白', text: "【场景：数年后】", mood: 'narrative', bg: ASSETS.bg.bedroom },
+                    { speaker: '旁白', text: "这样的光景，在两人结为道侣数年后的如今，已是寻常。 沈清秋斜倚在窗边的软榻上，忽然想起了许多年前那个小玉灵。", mood: 'narrative' },
+                    { speaker: '沈清秋', text: "（用折扇敲了敲掌心，揶揄） 说起来，当年你对那个小玉灵，倒是耐心得很。买糖，束发，教他识字……没看出来，岳掌门还挺有哄孩子的天赋。", mood: 'happy' },
+                    { speaker: '岳清源', text: "（从卷宗中抬头，眼底泛起暖意） 若那是你我血脉相连的孩子，我定然……要头疼该如何教导了。", mood: 'gentle' },
+                    { speaker: '岳清源', text: "（故意放缓语速，笑意更深） 毕竟，像你小时候那般倔强，可不好带。", mood: 'happy' },
+                    { speaker: '沈清秋', text: "（羞恼交加） 岳清源！你——！", mood: 'angry' },
+                    { speaker: '旁白', text: "沈清秋将折扇挥向岳清源，被打了一下的人却低低笑出了声。", mood: 'narrative' },
+                    { speaker: '岳清源', text: "是我失言。只是玩笑，此生有你足矣。", mood: 'happy' },
+                    { speaker: '沈清秋', text: "（唰地展开扇子挡脸，唇角微勾） 想得倒美……", mood: 'flush' }
                 ],
-                next: 'scene_system_space'
+                next: 'ending_he_screen'
             },
-            'scene_system_space': {
-                lines: [
-                    { speaker: '旁白', text: "画面归于寂静，沈清秋进入系统空间，面对悬浮的光团。", mood: 'narrative', bg: ASSETS.bg.system_space, shake: true },
-                    { speaker: '沈清秋', text: "刚才那是……什么鬼魅邪术？你是何方妖孽？", mood: 'shocked' },
-                    { speaker: '系统', text: "宿主沈清秋，请冷静。你可以将我视为某种“器灵”，但在我的世界，我被称为“系统”。", mood: 'cold' },
-                    { speaker: '沈清秋', text: "“系统”……从未听闻的名字。你刚才让我看到的那些幻象，究竟想说明什么？", mood: 'clenched' },
-                    { speaker: '系统', text: "我是由无数“愿景”凝聚而成的产物，你可以理解为一种“天命的修正机制”。刚才你体验的是一个通往毁灭的歧路。", mood: 'cold' },
-                    { speaker: '系统', text: "你现在正处于一段轮回中。每一次出现这种错误的结局并重来，岳清源的寿元便会折损。", mood: 'cold' },
-                    { speaker: '系统', text: "除非你能在这重重迷雾中，亲手推动一个“圆满结局”。", mood: 'cold' },
-                    { speaker: '系统', text: "只有达成圆满，岳清源折损的寿元才会被彻底抵消并补全。", mood: 'cold' },
-                    { speaker: '沈清秋', text: "（沉思良久）你要我用他的命来赌你可不可信吗？（握紧折扇）……在这世间，难道还有其他像我一样，被你们这种“系统”选中、或者说被缠上的人吗？", mood: 'clenched' },
-                    { speaker: '系统', text: "有。", mood: 'cold' },
-                    { speaker: '沈清秋', text: "谁？", mood: 'cold' },
-                    { speaker: '系统', text: "您暂时无权访问。但那人不会阻碍您的选择。", mood: 'cold' },
-                    { speaker: '旁白', text: "（序章 完）", mood: 'narrative' }
-                ],
-                next: 'endingWait'
-            },
-            'endingWait': {
+            'ending_he_screen': {
                 type: 'ending',
-                title: '未完待续',
-                text: "序章结束。",
-                bg: ASSETS.bg.start
+                title: '【HE：守得云开】',
+                //subtitle: 'Clouds Part',
+                text: "此生有你足矣。",
+                bg: ASSETS.bg.kiss // Using kiss as happy background
             }
         };
 
-        // --- 结局元数据 (用于结局回收) ---
+        // --- 结局元数据 (Updated) ---
         const ENDINGS_META = {
-            'endingWait': {
-                id: 'endingWait',
-                title: '未完待续',
-                subtitle: 'Coming Soon',
-                description: '序章结束，后续剧情开发中...',
+            'ending_be1_screen': {
+                id: 'ending_be1_screen',
+                title: '碎玉难圆',
+                //subtitle: 'Broken Jade',
+                description: '你看，有些东西一旦错过了那一瞬，就再也拼不回去了。',
                 color: 'text-slate-400'
+            },
+            'ending_be2_screen': {
+                id: 'ending_be2_screen',
+                title: '咫尺天涯',
+                //subtitle: 'Close Yet Far',
+                description: '有些伤口，即使知道了来由，也无法愈合。',
+                color: 'text-slate-400'
+            },
+            'ending_he_screen': {
+                id: 'ending_he_screen',
+                title: '守得云开',
+                //subtitle: 'Clouds Part',
+                description: '此生有你足矣。',
+                color: 'text-amber-400'
             }
         };
         const TOTAL_ENDINGS = Object.keys(ENDINGS_META).length;
 
-        // --- 章节元数据 (用于章节选择) ---
+        // --- 章节元数据 (Updated) ---
         const CHAPTERS_META = {
-            'chapter0': {
-                id: 'chapter0',
-                order: 0,
-                title: '序章',
-                description: '沈清秋获得赐名当日。'
-            }
+            'chapter1_start': { id: 'chapter1_start', order: 1, title: '第一章 灵犀洞旧梦' },
+            'chapter2_start': { id: 'chapter2_start', order: 2, title: '第二章 偷来的时光' },
+            'chapter3_start': { id: 'chapter3_start', order: 3, title: '第三章 残忍的对峙' },
+            'chapter4_start': { id: 'chapter4_start', order: 4, title: '第四章 玉碎魂归' },
+            'chapter5_start': { id: 'chapter5_start', order: 5, title: '第五章 记忆的潮汐' },
+            'chapter6_start': { id: 'chapter6_start', order: 6, title: '第六章 迟来的问候' }
         };
         const TOTAL_CHAPTERS = Object.keys(CHAPTERS_META).length;
 
@@ -907,7 +1121,7 @@
                 
                 <div class="relative z-50 text-center p-2 md:p-4 flex flex-col items-center gap-1 mobile-landscape-gap md:gap-4 lg:gap-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
                     <h1 class="font-calligraphy text-2xl mobile-landscape-title sm:text-3xl md:text-7xl text-slate-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] tracking-widest leading-relaxed">
-                        轮回百世<br/>与秋同归
+                        掌门他<br/>养了只小沈九
                     </h1>
                     
                     <div class="flex flex-col gap-2 mt-2 mobile-landscape-gap md:mt-4 lg:mt-8 w-full max-w-xs scale-90 md:scale-100">
@@ -1342,6 +1556,13 @@
 
         // --- 主逻辑 ---
         const App = () => {
+            const AUTO_SAVE_KEY = 'xiaoshenjiu_auto_save';
+            const SAVE_SLOT_PREFIX = 'xiaoshenjiu_save_slot_';
+            const READ_TEXT_KEY = 'xiaoshenjiu_read_text';
+            const UNLOCKED_ENDINGS_KEY = 'xiaoshenjiu_unlocked_endings';
+            const UNLOCKED_CHAPTERS_KEY = 'xiaoshenjiu_unlocked_chapters';
+            const SETTINGS_KEY = 'xiaoshenjiu_settings';
+
             const [isLoading, setIsLoading] = useState(true);
             const [gameState, setGameState] = useState({
                 sceneId: 'start',
@@ -1377,7 +1598,6 @@
             });
 
             // 已解锁结局记录
-            const UNLOCKED_ENDINGS_KEY = 'qijiu_unlocked_endings';
             const [unlockedEndings, setUnlockedEndings] = useState(() => {
                 try {
                     const saved = Storage.get(UNLOCKED_ENDINGS_KEY);
@@ -1393,19 +1613,18 @@
             });
 
             // 已解锁章节记录
-            const UNLOCKED_CHAPTERS_KEY = 'qijiu_unlocked_chapters';
             const [unlockedChapters, setUnlockedChapters] = useState(() => {
                 try {
                     const saved = Storage.get(UNLOCKED_CHAPTERS_KEY);
                     if (saved) {
                         // 过滤掉不存在的章节
                         const validChapters = saved.filter(id => CHAPTERS_META[id]);
-                        return new Set(validChapters.length > 0 ? validChapters : ['chapter0']);
+                        return new Set(validChapters.length > 0 ? validChapters : ['chapter1_start']);
                     }
                     // 默认解锁第一章
-                    return new Set(['chapter0']);
+                    return new Set(['chapter1_start']);
                 } catch {
-                    return new Set(['chapter0']);
+                    return new Set(['chapter1_start']);
                 }
             });
             const [isChaptersOpen, setIsChaptersOpen] = useState(false); // 章节选择界面
@@ -1446,7 +1665,6 @@
             };
 
             // Settings
-            const SETTINGS_KEY = 'qijiu_settings';
             const loadSettings = () => {
                 try {
                     const saved = Storage.get(SETTINGS_KEY);
@@ -1466,10 +1684,6 @@
             const audioRef = useRef(new Audio(ASSETS.audio.bgm));
             const timerRef = useRef(null);
             const autoTimerRef = useRef(null);
-
-            const AUTO_SAVE_KEY = 'qijiu_auto_save';
-            const SAVE_SLOT_PREFIX = 'qijiu_save_slot_';
-            const READ_TEXT_KEY = 'qijiu_read_text'; // 已读文本记录
 
             // 状态历史栈 (用于回退功能)
             const [stateHistory, setStateHistory] = useState([]);
@@ -1814,7 +2028,7 @@
                 if (gameState.sceneId === 'start') {
                     return html`<${StartScreen} 
                         onStart=${() => {
-                            setGameState({ sceneId: 'chapter0', lineIndex: 0, bg: ASSETS.bg.qingjing_night, history: [] });
+                            setGameState({ sceneId: 'chapter1_start', lineIndex: 0, bg: ASSETS.bg.lingxicave, history: [] });
                             setStateHistory([]); // 清空回退历史
                         }} 
                         onLoad=${(type) => {
@@ -1889,6 +2103,7 @@
 
                 const speaker = currentLine?.speaker;
                 const isSQQ = speaker === '沈清秋';
+                const isChild = speaker === '小沈九' || speaker === '玉灵' || speaker === '小沈九（玉灵）';
                 const isYQY = speaker === '岳清源';
                 const isSystem = speaker === '系统';
                 const isNarrative = !speaker || speaker === '旁白';
@@ -1901,25 +2116,33 @@
                         <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${isSystem ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
                             <img src=${ASSETS.char.system} class="char-sprite absolute bottom-0 left-1/2 -translate-x-1/2 h-[85%] object-contain object-bottom" />
                         </div>
-                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${isSQQ ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
+                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${(isSQQ || isChild) ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
                             ${(() => {
                         // 沈清秋立绘映射逻辑 (5张图版本)
                         const mood = currentLine?.mood || 'neutral';
                         let spriteSrc = ASSETS.char.sqq.v1; // 默认：正常
 
-                        if (['neutral', 'normal', 'cold', 'disdain', 'determined', 'narrative'].includes(mood)) {
+                        // 小沈九使用正常立绘但缩小
+                        if (isChild) {
+                            spriteSrc = ASSETS.char.sqq.v1;
+                            // 如果有不同 mood 也可以映射，暂时统一用 v1
+                            if (['smile', 'happy'].includes(mood)) spriteSrc = ASSETS.char.sqq.v1;
+                            if (['sad', 'pain'].includes(mood)) spriteSrc = ASSETS.char.sqq.v2;
+                        }
+
+                        if (['neutral', 'normal', 'cold', 'disdain', 'determined', 'narrative', 'calm'].includes(mood)) {
                             spriteSrc = ASSETS.char.sqq.v1; // 1. 正常
-                        } else if (['sleep', 'sorrow', 'despair', 'calm', 'thinking'].includes(mood)) {
+                        } else if (['sleep', 'sorrow', 'despair', 'thinking', 'dead'].includes(mood)) {
                             spriteSrc = ASSETS.char.sqq.v2; // 2. 闭眼
-                        } else if (['pain', 'embarrassed_shy', 'flush'].includes(mood)) {
-                            spriteSrc = ASSETS.char.sqq.v3; // 3. 脸红闭眼
-                        } else if (['worried', 'confused', 'surprised', 'shocked', 'soft', 'hesitant', 'repulsive', 'angry'].includes(mood)) {
+                        } else if (['pain', 'embarrassed_shy', 'flush', 'soft', 'happy'].includes(mood)) {
+                            spriteSrc = ASSETS.char.sqq.v3; // 3. 脸红/闭眼/开心 (Mapping happy to v3 for now)
+                        } else if (['worried', 'confused', 'surprised', 'shocked', 'hesitant', 'repulsive', 'angry', 'curious'].includes(mood)) {
                             spriteSrc = ASSETS.char.sqq.v4; // 4. 眼睛看旁边
                         } else if (['shame', 'shy', 'flustered', 'dark'].includes(mood)) {
                             spriteSrc = ASSETS.char.sqq.v5; // 5. 脸红+眼睛看旁边
                         }
 
-                        return html`<img src=${spriteSrc} class="char-sprite absolute bottom-0 left-1/2 md:left-[60%] -translate-x-1/2 h-[85%] object-contain object-bottom" />`;
+                        return html`<img src=${spriteSrc} class="char-sprite absolute bottom-0 left-1/2 md:left-[60%] -translate-x-1/2 h-[85%] object-contain object-bottom ${isChild ? 'scale-[0.70] origin-bottom' : ''}" />`;
                     })()}
                         </div>
                     </div>
