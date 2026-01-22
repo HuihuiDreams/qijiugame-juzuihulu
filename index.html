@@ -133,6 +133,67 @@
             filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
         }
 
+        /* Character Entrance Animation */
+        @keyframes char-slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .char-enter-anim {
+            animation: char-slide-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Button Bloom & Hover Effects */
+        .btn-bloom {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            background-clip: padding-box;
+            z-index: 10;
+        }
+
+        .btn-bloom:hover {
+            text-shadow: 0 0 8px rgba(103, 232, 249, 0.8);
+            transform: translateY(-1px);
+        }
+
+        /* Bloom Circle Effect */
+        .btn-bloom:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(103, 232, 249, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease-out, height 0.4s ease-out;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .btn-bloom:hover:after {
+            width: 200%;
+            height: 200%;
+        }
+
+        .btn-bloom svg {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-bloom:hover svg {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 4px rgba(103, 232, 249, 0.6));
+        }
+
         /* 屏幕震动动画 */
         @keyframes shake {
 
@@ -1090,16 +1151,16 @@
                             
                             <!-- 按钮组 (整合进对话框右下角) -->
                             <div class="absolute bottom-1 right-1 md:bottom-2 md:right-2 flex gap-1 md:gap-2 z-50 opacity-100 md:opacity-0 md:group-hover/box:opacity-100 transition-opacity duration-300" onClick=${e => e.stopPropagation()}>
-                                 <button onClick=${onBack} class="p-1 md:p-1.5 ${canGoBack ? 'bg-slate-800/80 text-cyan-200/80 hover:bg-cyan-900/80 hover:text-cyan-100' : 'bg-slate-800/40 text-slate-600 cursor-not-allowed'} rounded transition-colors" title="上一句" disabled=${!canGoBack}>
+                                 <button onClick=${onBack} class="btn-bloom p-1 md:p-1.5 ${canGoBack ? 'bg-slate-800/80 text-cyan-200/80 hover:bg-cyan-900/80 border border-transparent hover:border-cyan-500/30' : 'bg-slate-800/40 text-slate-600 cursor-not-allowed'} rounded transition-colors" title="上一句" disabled=${!canGoBack}>
                                     <${Icons.ChevronLeft} size=${14} class="md:w-5 md:h-5" />
                                 </button>
-                                 <button onClick=${onLog} class="p-1 md:p-1.5 bg-slate-800/80 hover:bg-cyan-900/80 rounded text-cyan-200/80 hover:text-cyan-100 transition-colors" title="回放">
+                                 <button onClick=${onLog} class="btn-bloom p-1 md:p-1.5 bg-slate-800/80 hover:bg-cyan-900/80 rounded text-cyan-200/80 hover:text-cyan-100 transition-colors border border-transparent hover:border-cyan-500/30" title="回放">
                                     <${Icons.FileText} size=${14} class="md:w-5 md:h-5" />
                                 </button>
-                                <button onClick=${onAuto} class="p-1 md:p-1.5 ${isAuto ? 'bg-cyan-600 text-white' : 'bg-slate-800/80 text-cyan-200/80'} hover:bg-cyan-700 rounded transition-colors" title="自动">
+                                <button onClick=${onAuto} class="btn-bloom p-1 md:p-1.5 ${isAuto ? 'bg-cyan-600 text-white shadow-[0_0_10px_rgba(8,145,178,0.5)]' : 'bg-slate-800/80 text-cyan-200/80'} hover:bg-cyan-700 rounded transition-colors border border-transparent hover:border-cyan-500/30" title="自动">
                                     <${isAuto ? Icons.Pause : Icons.Play} size=${14} class="md:w-5 md:h-5" />
                                 </button>
-                                <button onClick=${onSkip} class="p-1 md:p-1.5 ${isSkip ? 'bg-amber-600 text-white' : 'bg-slate-800/80 text-cyan-200/80'} hover:bg-amber-700 rounded transition-colors" title="快进">
+                                <button onClick=${onSkip} class="btn-bloom p-1 md:p-1.5 ${isSkip ? 'bg-amber-600 text-white shadow-[0_0_10px_rgba(217,119,6,0.5)]' : 'bg-slate-800/80 text-cyan-200/80'} hover:bg-amber-700 rounded transition-colors border border-transparent hover:border-amber-500/30" title="快进">
                                     <${Icons.FastForward} size=${14} class="md:w-5 md:h-5" />
                                 </button>
                             </div>
@@ -1129,27 +1190,27 @@
                     </h1>
                     
                     <div class="flex flex-col gap-2 mt-2 mobile-landscape-gap md:mt-4 lg:mt-8 w-full max-w-xs scale-90 md:scale-100">
-                        <button onClick=${() => onStart()} class="px-4 py-1.5 mobile-landscape-btn md:px-8 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-lg md:text-2xl font-calligraphy rounded transition-all tracking-[0.2em] backdrop-blur-sm">
+                        <button onClick=${() => onStart()} class="btn-bloom px-4 py-1.5 mobile-landscape-btn md:px-8 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-lg md:text-2xl font-calligraphy rounded transition-all tracking-[0.2em] backdrop-blur-sm">
                             开始新游戏
                         </button>
                         
                         <div class="flex gap-2 w-full">
                             ${hasAutoSave && html`
-                            <button onClick=${() => onLoad('auto')} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-sm md:text-lg font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                            <button onClick=${() => onLoad('auto')} class="btn-bloom flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-sm md:text-lg font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
                                 继续游戏
                             </button>
                             `}
-                            <button onClick=${() => onLoad('manual')} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-sm md:text-lg font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                            <button onClick=${() => onLoad('manual')} class="btn-bloom flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-sm md:text-lg font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
                                 读取存档
                             </button>
                         </div>
                         
                         <!-- 新增：结局回收和章节选择 -->
                         <div class="flex gap-2 w-full mt-1">
-                            <button onClick=${onChapters} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-xs md:text-base font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                            <button onClick=${onChapters} class="btn-bloom flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-xs md:text-base font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
                                 章节选择 <span class="text-cyan-400">${unlockedChaptersCount}/${totalChapters}</span>
                             </button>
-                            <button onClick=${onEndings} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-xs md:text-base font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                            <button onClick=${onEndings} class="btn-bloom flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-xs md:text-base font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
                                 结局回收 <span class="text-amber-400">${unlockedEndingsCount}/${TOTAL_ENDINGS}</span>
                             </button>
                         </div>
@@ -1165,7 +1226,7 @@
                     <div class="text-red-500 font-bold mb-1 md:mb-2 lg:mb-6 text-center tracking-widest uppercase text-[10px] md:text-xl lg:text-2xl border-b border-red-900/30 pb-1 shrink-0">命运抉择</div>
                     <h2 class="text-xs md:text-base lg:text-2xl text-slate-200 font-serif-sc text-center mb-1 md:mb-2 lg:mb-10 leading-relaxed shrink-0">${question}</h2>
                     
-                    <div class="grid grid-cols-2 gap-2 md:flex md:flex-col md:w-fit md:mx-auto md:gap-4 w-full overflow-y-auto custom-scroll pr-1">
+                    <div class="grid grid-cols-2 md:flex md:flex-col md:w-fit md:mx-auto md:gap-4 w-full overflow-y-auto custom-scroll pr-1">
                         ${options.map(opt => html`
                             <button onClick=${() => onChoice(opt)} class="group w-full text-left p-2 md:p-3 lg:p-5 border border-slate-700 hover:border-cyan-500 bg-slate-800/50 hover:bg-slate-700 transition-all rounded relative overflow-hidden flex flex-col justify-center min-h-[40px] md:min-h-[60px] lg:min-h-0">
                                 <span class="relative z-10 text-[10px] md:text-sm lg:text-xl font-serif-sc leading-tight mb-0.5 md:mb-1 text-slate-200 group-hover:text-amber-100 transition-colors">${opt.text}</span>
@@ -1491,18 +1552,18 @@
         // 8. 快捷菜单
         const QuickMenu = ({ onLog, onAuto, onSkip, isAuto, isSkip }) => html`
             <div class="absolute bottom-24 md:bottom-36 lg:bottom-56 right-2 md:right-8 z-40 flex gap-2 md:gap-4 mobile-landscape-bottom-adjust">
-                <button onClick=${onLog} class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/80 hover:bg-cyan-900/60 backdrop-blur rounded-full text-xs md:text-sm text-cyan-200 border border-cyan-500/20 hover:border-cyan-400 transition-all shadow-lg group">
-                    <${Icons.FileText} size=${14} class="group-hover:scale-110 transition-transform" />
+                <button onClick=${onLog} class="btn-bloom flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/80 hover:bg-cyan-900/60 backdrop-blur rounded-full text-xs md:text-sm text-cyan-200 border border-cyan-500/20 hover:border-cyan-400 shadow-lg group">
+                    <${Icons.FileText} size=${14} class="group-hover:text-cyan-100" />
                     <span class="font-bold hidden md:inline">回放</span>
                     <span class="font-bold md:hidden">Log</span>
                 </button>
-                <button onClick=${onAuto} class="flex items-center gap-1.5 px-3 py-1.5 ${isAuto ? 'bg-cyan-600/80 text-white shadow-[0_0_10px_rgba(8,145,178,0.5)]' : 'bg-slate-900/80 text-cyan-200'} hover:bg-cyan-700/80 backdrop-blur rounded-full text-xs md:text-sm border border-cyan-500/20 hover:border-cyan-400 transition-all shadow-lg group">
-                    <${isAuto ? Icons.Pause : Icons.Play} size=${14} class="group-hover:scale-110 transition-transform" />
+                <button onClick=${onAuto} class="btn-bloom flex items-center gap-1.5 px-3 py-1.5 ${isAuto ? 'bg-cyan-600/80 text-white shadow-[0_0_10px_rgba(8,145,178,0.5)]' : 'bg-slate-900/80 text-cyan-200'} hover:bg-cyan-700/80 backdrop-blur rounded-full text-xs md:text-sm border border-cyan-500/20 hover:border-cyan-400 shadow-lg group">
+                    <${isAuto ? Icons.Pause : Icons.Play} size=${14} class="group-hover:text-white" />
                     <span class="font-bold hidden md:inline">${isAuto ? '自动中' : '自动'}</span>
                     <span class="font-bold md:hidden">Auto</span>
                 </button>
-                <button onClick=${onSkip} class="flex items-center gap-1.5 px-3 py-1.5 ${isSkip ? 'bg-amber-600/80 text-white shadow-[0_0_10px_rgba(217,119,6,0.5)]' : 'bg-slate-900/80 text-cyan-200'} hover:bg-amber-700/80 backdrop-blur rounded-full text-xs md:text-sm border border-cyan-500/20 hover:border-amber-400 transition-all shadow-lg group">
-                    <${Icons.FastForward} size=${14} class="group-hover:scale-110 transition-transform" />
+                <button onClick=${onSkip} class="btn-bloom flex items-center gap-1.5 px-3 py-1.5 ${isSkip ? 'bg-amber-600/80 text-white shadow-[0_0_10px_rgba(217,119,6,0.5)]' : 'bg-slate-900/80 text-cyan-200'} hover:bg-amber-700/80 backdrop-blur rounded-full text-xs md:text-sm border border-cyan-500/20 hover:border-amber-400 shadow-lg group">
+                    <${Icons.FastForward} size=${14} class="group-hover:text-white" />
                     <span class="font-bold hidden md:inline">${isSkip ? '快进中' : '快进'}</span>
                     <span class="font-bold md:hidden">Skip</span>
                 </button>
@@ -1517,21 +1578,28 @@
 
             useEffect(() => {
                 if (src !== currentSrc) {
+                    // 1. 立即设定新目标
                     setNextSrc(src);
+                    setIsTransitioning(false); // 先重置动画状态
 
-                    // 下一帧启动动画
-                    requestAnimationFrame(() => {
-                        setIsTransitioning(true);
-                    });
+                    // 2. 下一帧启动新动画
+                    const raf = requestAnimationFrame(() => setIsTransitioning(true));
 
-                    // 动画结束后更新状态
+                    // 3. 设置完成回调
                     const timer = setTimeout(() => {
                         setCurrentSrc(src);
-                        setNextSrc(null);
-                        setIsTransitioning(false);
+                        // 注意：这里不需要手动 setNextSrc(null)，留给下一次 render 的 else 分支处理更安全
                     }, 1000); // 1秒淡入淡出，与 CSS duration 匹配
 
-                    return () => clearTimeout(timer);
+                    // 4. ✅ 关键：清理函数
+                    return () => {
+                        cancelAnimationFrame(raf);
+                        clearTimeout(timer);
+                    };
+                } else {
+                    // 5. 稳定状态：清理过渡痕迹
+                    setNextSrc(null);
+                    setIsTransitioning(false);
                 }
             }, [src, currentSrc]);
 
@@ -1893,7 +1961,7 @@
                 return saves;
             };
 
-            const handleSaveSlot = (slotId) => {
+            const handleSaveSlot = async (slotId) => {
                 try {
                     const prefix = CONSTANTS.STORAGE_KEYS.SAVE_SLOT_PREFIX;
                     const existingData = Storage.get(`${prefix}${slotId}`);
@@ -1902,7 +1970,7 @@
                         ? `是否覆盖 存档 ${slotId} ?`
                         : `是否在 存档 ${slotId} 创建新存档?`;
 
-                    if (window.confirm(promptMsg)) {
+                    if (await showConfirm(promptMsg)) {
                         const saveData = {
                             ...gameState,
                             timestamp: Date.now(),
@@ -1912,21 +1980,22 @@
                         const result = Storage.set(`${prefix}${slotId}`, saveData);
                         if (result.success) {
                             setRefreshSaves(prev => prev + 1);
+                            await showAlert(`存档 ${slotId} 保存成功`);
                         } else {
-                            alert(`存档 ${slotId} 保存失败：${result.error || '未知错误'}`);
+                            await showAlert(`存档 ${slotId} 保存失败：${result.error || '未知错误'}`);
                         }
                     }
                 } catch (err) {
                     console.error('Save Error:', err);
-                    alert(`保存过程发生错误: ${err.message}`);
+                    await showAlert(`保存过程发生错误: ${err.message}`);
                 }
             };
 
-            const handleLoadSlot = (slotId) => {
+            const handleLoadSlot = async (slotId) => {
                 const prefix = CONSTANTS.STORAGE_KEYS.SAVE_SLOT_PREFIX;
                 const data = Storage.get(`${prefix}${slotId}`);
                 if (data) {
-                    if (window.confirm(`读取存档 ${slotId} ?\n当前未保存的进度将丢失。`)) {
+                    if (await showConfirm(`读取存档 ${slotId} ?\n当前未保存的进度将丢失。`)) {
                         setGameState(data);
                         setIsSaveLoadOpen(false);
                         setIsMenuOpen(false);
@@ -1937,8 +2006,8 @@
                 }
             };
 
-            const handleDeleteSlot = (slotId) => {
-                if (window.confirm(`确认删除存档 ${slotId} ?`)) {
+            const handleDeleteSlot = async (slotId) => {
+                if (await showConfirm(`确认删除存档 ${slotId} ?`)) {
                     const prefix = CONSTANTS.STORAGE_KEYS.SAVE_SLOT_PREFIX;
                     const success = Storage.remove(`${prefix}${slotId}`);
                     if (success) {
@@ -1947,12 +2016,12 @@
                 }
             };
 
-            const loadAutoSave = () => {
+            const loadAutoSave = async () => {
                 const data = Storage.get(CONSTANTS.STORAGE_KEYS.AUTO_SAVE);
                 if (data) {
                     setGameState(data);
                 } else {
-                    alert('没有找到自动存档');
+                    await showAlert('没有找到自动存档');
                 }
             };
 
@@ -2127,13 +2196,13 @@
 
                 return html`
                     <div class="absolute inset-0 z-10 flex items-end justify-center pointer-events-none">
-                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${isYQY ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
+                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-[800ms] cubic-bezier(0.34, 1.56, 0.64, 1) ${isYQY ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
                             <img src=${ASSETS.char.yqy} class="char-sprite absolute bottom-0 left-1/2 md:left-[40%] -translate-x-1/2 h-[85%] object-contain object-bottom" />
                         </div>
-                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${isSystem ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
+                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-[800ms] cubic-bezier(0.34, 1.56, 0.64, 1) ${isSystem ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
                             <img src=${ASSETS.char.system} class="char-sprite absolute bottom-0 left-1/2 -translate-x-1/2 h-[85%] object-contain object-bottom" />
                         </div>
-                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${(isSQQ || isChild) ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
+                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-[800ms] cubic-bezier(0.34, 1.56, 0.64, 1) ${(isSQQ || isChild) ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
                             ${(() => {
                         // 沈清秋立绘映射逻辑 (5张图版本)
                         const mood = currentLine?.mood || 'neutral';
@@ -2174,7 +2243,7 @@
                             isNarrative=${isNarrative}
                             onLog=${() => setIsHistoryOpen(true)}
                             onAuto=${() => { setIsAuto(!isAuto); setIsSkip(false); }}
-                            onSkip=${() => {
+                            onSkip=${async () => {
                         // 只要有一种匹配就算已读
                         const text = currentLine?.text;
                         const textIdHash = getTextId(gameState.sceneId, gameState.lineIndex, text);
@@ -2182,7 +2251,7 @@
                         const canSkip = readTextIds.has(textIdHash) || readTextIds.has(textIdLegacy);
 
                         if (!isSkip && !canSkip) {
-                            alert('只能快进已读过的剧情哦！');
+                            await showAlert('只能快进已读过的剧情哦！');
                             return;
                         }
                         setIsSkip(!isSkip);
