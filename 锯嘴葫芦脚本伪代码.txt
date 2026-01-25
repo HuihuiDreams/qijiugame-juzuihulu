@@ -1,0 +1,430 @@
+//锯嘴葫芦脚本伪代码
+
+const ENDINGS_META = {
+    'ending_be1_screen': {
+        id: 'ending_be1_screen',
+        title: '陌路',
+        description: '今后那便只谈利益，不谈感情。',
+        color: 'text-slate-400'
+    },
+    'ending_be2_screen': {
+        id: 'ending_be2_screen',
+        title: '难愈',
+        description: '有些伤口，即使知道了真相，也无法愈合。',
+        color: 'text-slate-400'
+    },
+    'ending_he_screen': {
+        id: 'ending_he_screen',
+        title: '常伴左右',
+        description: '常伴左右，决不反悔。',
+        color: 'text-amber-400'
+    }
+};
+
+const CHAPTERS_META = {
+    'chapter1': { id: 'chapter1', order: 1, title: '第一章 临门一脚' },
+    'chapter2': { id: 'chapter2', order: 2, title: '第二章 往事暗涌' },
+    'chapter3': { id: 'chapter3', order: 3, title: '第三章 继任大典' },
+    'chapter4': { id: 'chapter4', order: 4, title: '第四章 禁阁寻踪' },
+    'chapter5': { id: 'chapter5', order: 5, title: '第五章 决裂与真相' },
+    'chapter6': { id: 'chapter6', order: 6, title: '第六章 守得云开' }
+};
+
+const SCENES = {
+    // --- Chapter 1: The Final Step ---
+    'chapter1': {
+        lines: [
+            { speaker: '旁白', text: "【第一章：临门一脚】", mood: 'narrative', bg: ASSETS.bg.qingjing_night },
+            { speaker: '旁白', text: "竹影斑驳投在地上，沈清秋盘膝而坐，眉头紧锁，额角渗出冷汗。", mood: 'narrative' },
+            { speaker: '旁白', text: "修仙者若心镜有损，极其不利于修行。轻者修为倒退，寸步难行；重者走火入魔，经脉寸断而死。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）十二峰继任大典在即，我的修为却迟迟跟不上，卡在那临门一脚上。", mood: 'worried' },
+            { speaker: '沈清秋', text: "（内心）烦躁……越是烦躁，越是不得要领，越是不得突破。", mood: 'worried' },
+            { speaker: '旁白', text: "灵气在周身激荡，视野边缘泛起代表危险的红光。沈清秋猛地睁眼，呼吸急促。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）若不能在大典前突破，不仅修为停滞，更会丢了清静峰的脸面。放眼整个苍穹山派，闭关修炼最好的地方，自然是灵犀洞。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "（内心）……只是进入灵犀洞，需要掌门的首肯和特制的腰牌。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "（皱眉，起身）虽不愿见他，但也别无他法了。", mood: 'neutral' },
+            { speaker: '旁白', text: "如今继任大典在即，岳清源几乎忙到脚不沾地了。原本在书房埋头处理门中事务的岳清源，看到推门而进的沈清秋，眼底迸发出的喜色，藏都藏不住。", mood: 'narrative', bg: ASSETS.bg.bedroom },
+            { speaker: '旁白', text: "对方倒是被他看的有些不自在，眼神相对的瞬间就飘向了别处，轻咳了一下清了清嗓子。", mood: 'narrative' },
+            { speaker: '旁白', text: "岳清源这时才意识到自己从对方进门到现在一直盯着，尴尬的收回了视线，看着对方不再直勾勾的盯着自己，沈清秋倒不前进就站在离门一步远的地方说明了来意。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（冷漠）我要进灵犀洞。", mood: 'neutral' },
+            { speaker: '旁白', text: "得到了自己想要的东西，沈清秋头也不回，转身就走。", mood: 'narrative' },
+            { speaker: '旁白', text: "灵犀洞内，沈清秋来到了一处灵气浓郁的洞府，在石烛台上点起幽幽的烛火，火光明明灭灭，隐约照亮洞府。", mood: 'narrative', bg: ASSETS.bg.lingxicave },
+            { speaker: '沈清秋', text: "（皱眉观察）这些痕迹……", mood: 'neutral' },
+            { speaker: '旁白', text: "烛光亮起沈清秋才发现洞壁上皆是刀劈斧砍的痕迹，仿佛人脸上层层叠叠的伤疤，狰狞骇人。除了剑痕，还有大片大片的暗红色血迹。", mood: 'narrative' }
+        ],
+        next: 'chapter2'
+    },
+
+    // --- Chapter 2: Undercurrents of the Past ---
+    'chapter2': {
+        lines: [
+            { speaker: '旁白', text: "【第二章：往事暗涌】", mood: 'narrative', bg: ASSETS.bg.lingxicave },
+            { speaker: '旁白', text: "手中凝起一团光晕照明，沈清秋凑近看，这些暗红色的血迹，有的像是用利刃穿刺身体，喷溅上去的。", mood: 'narrative' },
+            { speaker: '旁白', text: "有的则仿佛有人曾经用额头对着岩壁叩首，哀求着什么，一下又一下磕上去的痕迹。", mood: 'narrative' },
+            { speaker: '旁白', text: "血迹明暗不一明显是不同时间喷溅上去的，但色差又不是特别明显，想必间隔时间也不是特别长。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）这些血，若是同一个人流的，不死也要去半条命了。至于这人到底是谁，我倒也没心思想这些了。", mood: 'worried' },
+            { speaker: '沈清秋', text: "（内心）此次闭关，若还不能突破……", mood: 'worried' },
+            { speaker: '旁白', text: "沈清秋在石台上强迫自己静心打坐，也许是近日忧思过度，灵台像是被雾蒙住一样，久久不能静下心来。", mood: 'narrative' },
+            { speaker: '旁白', text: "突感有一股灵力再脉络中横冲直撞，顿时心中一慌，原本在脉络中运行的好好的灵力更加不受控制。", mood: 'narrative' },
+            { speaker: '旁白', text: "四周的灵力还在源源不断的，向他汇集，但体内脉络无法疏通，灵力撞的经脉生疼，灵气的吸收，一时半会却停不下来。", mood: 'narrative' },
+            { speaker: '奇怪的声音', text: "“师尊，弟子求您放我出去。求求您了，放我出去，放我出去。”", mood: 'system', shake: true },
+            { speaker: '旁白', text: "脑中炸响起一个刺耳的近乎是嚎叫出来的声音。灵台被这刺耳的声音，刺的一瞬清明，经络中乱窜的灵力也稍稍平息。", mood: 'narrative' },
+            { speaker: '旁白', text: "忽觉有一人在背后。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋毛骨悚然，迅速取出手腕间贴着的匕首，完全出于本能，手腕翻转朝身后猛扎过去。", mood: 'narrative', shake: true },
+            { speaker: '旁白', text: "不过身后的人时刻关注着他，比他反应更快稳稳的握住了他的手腕，阻止了他要刺出去的匕首。", mood: 'narrative' },
+            { speaker: '岳清源', text: "是我。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "……", mood: 'shocked' },
+            { speaker: '旁白', text: "岳清源继续给他输送灵力，引导对方体内躁动的灵流平息。", mood: 'narrative' },
+            { speaker: '岳清源', text: "我的错，吓到师弟了。", mood: 'worried' },
+            { speaker: '旁白', text: "他不说还好说了沈清秋像是一只被踩了尾巴的猫忽的炸起。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "吓谁？！", mood: 'angry', shake: true },
+            { speaker: '旁白', text: "岳清源有时候真的想把自己的嘴缝上，明知道对方不喜自己多说控制不住也就算了，还每次就多那一嘴把人惹炸毛了。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋真被他吓到，自觉丢了面子，又开始挖苦他，阴阳怪气道。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "掌门不是从来不入灵犀洞闭关？何至于我来了，你也来了。", mood: 'disdain' },
+            { speaker: '岳清源', text: "…我以前也是进来过的。", mood: 'sorrow' },
+            { speaker: '沈清秋', text: "谁关心您来没来过？", mood: 'disdain' },
+            { speaker: '岳清源', text: "清秋，专心调气平息。", mood: 'gentle' },
+            { speaker: '旁白', text: "沈清秋怎么可能会听他的话？直接唱反调，索性自己也不调息，完全任对方的灵力在自己体内流窜，为自己调息。", mood: 'narrative' },
+            { speaker: '旁白', text: "静下心来，想起之前自己脑海中莫名其妙响起的声音，灵犀洞内不允许内斗，洞壁上的血迹，想必不是打斗时弄上去，可能是有人走火入魔弄上去的，心下不免好奇。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "有人走火入魔，困死在这处洞府了吗？", mood: 'curious' },
+            { speaker: '旁白', text: "可他这一问，换来的却是良久的沉默。", mood: 'narrative' },
+            { speaker: '旁白', text: "他们两个人相处时，通常都是岳清源不厌其烦的主动找话题，从来没有像这般对方不发一言的情况。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋完全受不了这样的落差心中陡然升起一点异样感。", mood: 'narrative' },
+            { speaker: '旁白', text: "……", mood: 'narrative' },
+            { speaker: '沈清秋', text: "……岳清源？", mood: 'perplexed' },
+            { speaker: '岳清源', text: "我在。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "在你为什么不吭声？", mood: 'angry' },
+            { speaker: '岳清源', text: "……有人走火入魔，但没死在这。", mood: 'sorrow' },
+            { speaker: '旁白', text: "若不是执念未消，灵智停留在这里，修士又怎么会感知的到？", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（眯眼盯了一阵墙壁，心中的好奇不减反增）方才我听到哀求的声音了。你可知他是谁？", mood: 'curious' },
+            { speaker: '旁白', text: "忽然，贴在后背的手剧烈颤抖起来。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）他在抖？怎么回事……", mood: 'perplexed' },
+            { speaker: '旁白', text: "沈清秋回头，只见岳清源脸色惨白，嘴唇也不自觉地颤抖着，眼中满是惊骇。", mood: 'narrative' },
+            { speaker: '旁白', text: "见他转头，岳清源勉强扯出一个比哭还难看的笑容，慌忙收回了贴在他后背的手。", mood: 'narrative' },
+            { speaker: '旁白', text: "他匆匆走下石台，甚至不敢直视沈清秋的眼睛。", mood: 'narrative' },
+            { speaker: '岳清源', text: "小…清秋，修为之事不可心急。入门时间尚短便已筑基巅峰，修为上涨极快，对经脉并无好处。", mood: 'worried' },
+            { speaker: '岳清源', text: "现如今最好还是巩固修为，莫要对自己太过严苛了。", mood: 'worried' },
+            { speaker: '旁白', text: "正想回怼一句，结果对方像是受到什么惊吓一般脸色更白了。", mood: 'narrative' },
+            { speaker: '旁白', text: "岳清源步伐迈的极快，逃也似的离开了，身形还透着几分狼狈，甚至还被洞府中的石头绊了一下，差点摔倒。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）跑什么？我有那么可怕吗？", mood: 'angry' },
+            { speaker: '沈清秋', text: "（盯着背影，心中无名火起）莫名其妙！", mood: 'angry' },
+            { speaker: '旁白', text: "沈清秋将袖中的匕首狠狠地掷在地上，砰的一声，灵力裹挟着匕首扎入地面，乱石飞溅。", mood: 'narrative', shake: true },
+            { speaker: '旁白', text: "剩下的日子，沈清秋听劝了。他没有盲目冲刺门槛，而是开始一遍遍冲刷经脉。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）他说得没错……是我太急了。灵力运行间已有明显的阻塞感，甚至带着细微的钝痛。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "（内心）这感觉……倒像是被人强行拔苗助长了一样。", mood: 'neutral' },
+            { speaker: '旁白', text: "一个月后，经脉的钝痛终于消失，修为虽未突破，却比之前稳固了数倍。", mood: 'narrative' },
+            { speaker: '旁白', text: "就在准备离开灵犀洞时，沈清秋在先前掷匕首的位置发现了一样东西。", mood: 'narrative' },
+            { speaker: '旁白', text: "一团指甲盖大小的金色流光，正吸附在匕首上，缓慢地吸食着残存的灵气。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（凑近观察）这是什么？", mood: 'curious' },
+            { speaker: '沈清秋', text: "（神识扫过）竟有一丝人的生息……可感知却又断断续续的，什么也捕捉不到。", mood: 'curious' },
+            { speaker: '沈清秋', text: "（内心）岳清源之前的回避，还有那慌张的背影……想必与此物有关。", mood: 'neutral' },
+            { speaker: '旁白', text: "他将金光封入符纸，带出了灵犀洞。刚一踏出洞口，便见到了等候多时的岳清源。", mood: 'narrative', bg: ASSETS.bg.qingjing_night },
+            { speaker: '旁白', text: "看到来人，之前烦躁的情绪似乎被安抚了一下，但面上还是没个好脸，一张口依旧阴阳怪气的。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "呦！什么风把掌门刮过来了，之前不是不怎么来吗？现在倒是跑的勤。", mood: 'disdain' },
+            { speaker: '岳清源', text: "还有三日便是继任大典，你的服饰做好了，想让你去试试，不合适，还可以再改。", mood: 'gentle' },
+            { speaker: '旁白', text: "岳清源不由分说地牵起他的手，引导灵力入体探查。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）算了，多一事不如少一事。若不让他查完这一遭，怕是还要找别的借口纠缠个没完。", mood: 'neutral' },
+            { speaker: '旁白', text: "以他对岳清源的了解，此时不探查他明白，还会找其他理由再探查的。多一事不如少一事。", mood: 'narrative' },
+            { speaker: '旁白', text: "灵力收回自身，岳清源依旧没松手，反而是握的更紧了，牵着对方，一前一后的走着，像小时候相伴的无数个日夜一样。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋真是被这一举动整愣了，竟知不觉跟着走了两步，反映过来极快的抽回自己的手。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "衣服送到清静峰即可，我自己会试，不必劳烦掌门。", mood: 'neutral' },
+            { speaker: '旁白', text: "随后卸下腰间进出灵犀路的腰牌，扔给岳清源，头也不回的走了。", mood: 'narrative' },
+            { speaker: '旁白', text: "独留岳清源一人呆呆地站在原地，看着那渐行渐远的青衣身影，握着腰牌的手，已经握到发白。", mood: 'narrative' },
+            { speaker: '旁白', text: "回到穹顶殿继续处理门中实务，卷宗没看几卷，他的大弟子书砚在外敲门。", mood: 'narrative', bg: ASSETS.bg.bedroom },
+            { speaker: '书砚', text: "师尊，我能进来吗？", mood: 'neutral' },
+            { speaker: '岳清源', text: "进吧！", mood: 'neutral' },
+            { speaker: '书砚', text: "（规规矩矩行了一个弟子礼）大典的服饰已经给沈师叔送过去了。", mood: 'neutral' },
+            { speaker: '旁白', text: "岳清源点头示意自己知道了，随后又低头继续看自己手里的卷宗。", mood: 'narrative' },
+            { speaker: '岳清源', text: "没什么事就回去休息最近还有的忙。", mood: 'neutral' },
+            { speaker: '书砚', text: "师尊，你备着的那些饭菜，再不吃就要凉了。", mood: 'worried' },
+            { speaker: '岳清源', text: "（连头也没抬）你自行处理了吧！", mood: 'sorrow' },
+            { speaker: '书砚', text: "是，师尊，弟子告退。", mood: 'neutral' },
+            { speaker: '旁白', text: "门关上后，书房中便只剩下翻动卷综书写毛笔的刷刷声。", mood: 'narrative' },
+            { speaker: '旁白', text: "————————三日后—————————", mood: 'narrative' }
+        ],
+        next: 'chapter3'
+    },
+
+    // --- Chapter 3: Succession Ceremony ---
+    'chapter3': {
+        lines: [
+            { speaker: '旁白', text: "【第三章：继任大典】", mood: 'narrative', bg: ASSETS.bg.start },
+            { speaker: '旁白', text: "继任大典在穹顶峰大殿之中举行。", mood: 'narrative' },
+            { speaker: '旁白', text: "现如今，穹顶大殿空空荡荡的，只站着12位新继任的峰主，岳清源一人站在高座之上，其他峰主按照排名顺序呈三角形依次站在新任掌门下首，为新任掌门护法。", mood: 'narrative' },
+            { speaker: '旁白', text: "护山大阵的阵法灵篆浮现在整个穹顶殿中，十二峰主所站着的位置，为阵法的十二阵眼，源源不断的给阵眼汇聚灵力，一时之间整个苍穹山派灵气震荡。", mood: 'narrative', shake: true },
+            { speaker: '旁白', text: "继任大典其实就是祭天大典。", mood: 'narrative' },
+            { speaker: '旁白', text: "最强修士以自身灵力融入山灵，聚气成阵，自动庇护这一方天地。融入的灵力越多，护山大灵便越强。", mood: 'narrative' },
+            { speaker: '旁白', text: "玄肃剑光芒大盛，岳清源周身灵力暴涨，五彩的虚影冲天而起，在空中汇成斑斓的金光。", mood: 'narrative' },
+            { speaker: '旁白', text: "待金光完全落于阵中，大典也就算成了。", mood: 'narrative' },
+            { speaker: '旁白', text: "居于下首的沈清秋，怀中那带出的符纸此刻却灼热起来，灼得他胸腔生疼。", mood: 'narrative', shake: true },
+            { speaker: '沈清秋', text: "（不可置信地盯着岳清源）（内心）这震颤……符纸里封着的，竟然是岳清源的灵脉？！", mood: 'shocked' },
+            { speaker: '沈清秋', text: "（按住胸口）（灼热感似乎要将他烧穿）他竟将灵脉与佩剑相绑……难怪岳清源从不轻易拔剑。", mood: 'shocked' },
+            { speaker: '旁白', text: "此刻，沈清秋心中满怀震惊，面上有几丝慌乱之色，可殿中的人皆忙于祭天，加之沈清秋又站的比较靠前，因此也没有人注意到他面上的慌乱。", mood: 'narrative' },
+            { speaker: '岳清源', text: "（回忆）“我以前也是进来过的。”", mood: 'sorrow' },
+            { speaker: '沈清秋', text: "（回忆）“有人走火入魔，困死在这处洞府了吗？”", mood: 'neutral' },
+            { speaker: '岳清源', text: "（回忆）“……有人走火入魔，但没死在这。”", mood: 'sorrow' },
+            { speaker: '旁白', text: "一切奇怪的线索，似乎在此刻诡异地串联在了一起。", mood: 'narrative' },
+            { speaker: '旁白', text: "玄肃剑收回鞘中，祭天结束。山中灵气徐徐沉降，庆祝的喧嚣声随之响起。", mood: 'narrative' },
+            { speaker: '旁白', text: "书砚带着一群弟子将珍馐佳酿摆入大殿，虽然撤去了冗长的发言，但气氛依旧热烈。", mood: 'narrative' },
+            { speaker: '旁白', text: "十二峰主各自入坐，乐师奏乐，舞姬入殿，整个穹顶峰沉浸在祥和之中。", mood: 'narrative' },
+
+            // Banquet scene
+            { speaker: '旁白', text: "坐在掌门下手沈清秋全然不在状态像是被抽走了魂似的，也不知道在想些什么，只是一杯接着一杯喝闷酒。", mood: 'narrative' },
+            { speaker: '旁白', text: "眼神飘忽这明显不在状态的样子，属实罕见毕竟沈清秋自己从当上了首席之后就表面君子就已经让他练得炉火纯青，鲜少会出现这种完全走神的举动，更何况还这么明显。", mood: 'narrative' },
+            { speaker: '岳清源', text: "清秋，莫要贪杯了。", mood: 'worried' },
+            { speaker: '旁白', text: "沈清秋惊得酒水洒出，手里的杯子差点脱手飞去。", mood: 'narrative' },
+            { speaker: '旁白', text: "高座上的互动瞬间引起了四面八方的目光。苍穹山派的人皆知这两人相处怪异，好奇与八卦在席间悄然流转。", mood: 'narrative' },
+            { speaker: '齐清萋', text: "（隔空打量，毫不遮掩地对身旁人低语）……真是在意得很呐。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "（冷着脸扫视一圈，目光如刀，吓退了不少窥视者）……！", mood: 'disdain' },
+            { speaker: '沈清秋', text: "（放下酒杯，轻声回道）……嗯。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "（内心）岳清源这种人的性子，会因为什么事情走火入魔？还是以剑入命，这种极端的方式。什么能让那个温文如玉，谦和有礼，永远一副大家风范的岳清源损了心境？", mood: 'perplexed' },
+            { speaker: '旁白', text: "越想心中越有一股无名火在烧，隐在衣袖中的手握得发白，实在忍不住抬头看向岳清源的方向。", mood: 'narrative' },
+            { speaker: '旁白', text: "不看不要紧，一看二人四目相对，岳清源有些许泛白的脸上，飞出笑意像柔和的阳光在荡漾。", mood: 'narrative' },
+            { speaker: '旁白', text: "被这一笑晃了眼的沈清秋，虽然不想承认，但他的确很喜欢岳清源这样冲着他笑，甚至两人分别多年，还是会被这样的岳清源分了心神。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）居然又被他这样一笑晃了眼……我可真是个贱骨头。", mood: 'disdain' },
+            { speaker: '旁白', text: "宴会没过半沈清秋就自请离开了，他想知道的太多了，他要自己去查查。", mood: 'narrative' }
+        ],
+        next: 'chapter4'
+    },
+
+    // --- Chapter 4: Tracing in the Library ---
+    'chapter4': {
+        lines: [
+            { speaker: '旁白', text: "【第四章：禁阁寻踪】", mood: 'narrative', bg: ASSETS.bg.qingjing_night },
+            { speaker: '旁白', text: "清静峰的禁书阁，记载着大大小小各处禁书，还有着整个苍穹山派的史册。", mood: 'narrative' },
+            { speaker: '旁白', text: "从第五层一路往上找，快要将第八层也寻尽之时，沈清秋才找到岳清源的一部史册。", mood: 'narrative' },
+            { speaker: '旁白', text: "岳清源的史册被秘法密封住了，上面共两层禁制，第一层就是前清静峰主常用的禁制，然而这第二层是一层私制，禁制上面散发着岳清源的气息。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）这放在第八层的史册，是不是特地瞒着，未曾继位的他……", mood: 'perplexed' },
+            { speaker: '旁白', text: "沈清秋从怀中掏出那封有岳清源灵脉的符纸，将符纸贴在上面，咬破指尖在符纸上画了一个简易的阵法，随后注入自己的灵力。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）反正不可能去找岳清源来解除禁制，不如死马当作活马医。", mood: 'neutral' },
+            { speaker: '旁白', text: "金光闪过禁制破，符纸收回怀中后，沈清秋将史册捧在手心，浑身颤抖久久不敢打开。", mood: 'narrative' },
+            { speaker: '旁白', text: "如果这上面记载着，岳清源在灵溪洞走火入魔的原因，答案会是什么呢？他既想知道答案，又不敢知道答案，心中泛起一阵心慌。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋像一座雕塑一样，捧着那史册久久的站立在那。", mood: 'narrative' },
+            { speaker: '旁白', text: "就在沈清秋胡思乱想之际，有一个“人”从后背环抱住他，十分熟悉的嗓音响起。", mood: 'narrative' },
+            { speaker: '心魔岳清源', text: "“小九，不打开是不想知道吗？需要我帮忙吗？或者是我直接告诉小九？”", mood: 'gentle' },
+            { speaker: '旁白', text: "沈清秋浑身僵直不得动弹，原本环抱住他的人单手搂着沈清秋的腰转到正面来，顺着他的手接过他手上的史册。", mood: 'narrative' },
+            { speaker: '旁白', text: "心魔所幻化的岳清源，直直注视着沈清秋眼里倒映的都是对方的身影，眼底揉着细碎的温柔，面上带着浅浅的笑意。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）我本是喜欢岳清源对我笑的，这样会让我有一种独占的错觉。可是眼前这个心魔所化的岳清源的笑容，只让我觉得恶心。", mood: 'disdain' },
+            { speaker: '旁白', text: "心魔就是心之所化，越得不到什么，越想得到什么，心魔便会幻化出来，来蛊惑本尊。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋根本无法直视自己的心魔，或者说是他根本无法直视这样的岳清源。一举一动都带着刻意的讨好，像极了常去留连风月场所之地的女子，带着讨好和勾引……", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋被自己的想法恶心的够呛，如果不是心境不稳被心魔所困无法动弹，他一定一拳就照呼到对方脸上。", mood: 'narrative' },
+            { speaker: '旁白', text: "心魔怎么会不知道他心中所想？将手中的史册随意一丢，双手齐上，一手揽着腰沈清秋，一手顺着对方衣襟向里摸索。", mood: 'narrative' }, //这里最好有CG
+            { speaker: '沈清秋', text: "（内心）居然被顶着岳清源的脸的的心魔非礼了！简直荒唐！", mood: 'shocked' },
+            { speaker: '旁白', text: "沈清秋强行冲开穴道上的桎梏，一拳直朝心魔面门上去，不过很可惜，在强行冲破桎梏的时候，心魔便消散了，这一拳只打了个空。", mood: 'narrative' },
+            { speaker: '旁白', text: "胸腔血气翻涌终归是被强行压下，沈清秋捂着胸口面色煞白，弯腰捡起史册翻开来看。", mood: 'narrative' },
+            { speaker: '旁白', text: "可是这上面记载的内容却让人大失所望，只模糊地讲述了所有人都知道的岳清源当掌门前的经历，可越看越觉得不对劲。", mood: 'narrative' },
+            { speaker: '旁白', text: "前面几页字迹走风是他师尊的没错，可是后半本完全不对，虽然这字迹有有七八分相似，但还是让沈清秋看出了些端倪。", mood: 'narrative' },
+            { speaker: '旁白', text: "除了前几页比较连贯，完完全全没有动过，后面几乎都是仿的。若非沈清秋十分熟悉他师尊的笔记，险些也看不出来，岳清源的这部史册，被篡改过。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）篡改内容的人，毫无疑问就是岳清源本人。至于这篡改的时间，只有这准备继任的这一个月。", mood: 'perplexed' },
+            { speaker: '沈清秋', text: "（内心）在灵犀洞时，岳清源那一幅做贼心虚慌忙逃窜的样子……他在刻意隐瞒，而且是在刻意隐瞒着我！", mood: 'perplexed' },
+            { speaker: '沈清秋', text: "（内心）我们之间还有什么值得他如此刻意隐瞒？除了年幼时的约定便再无其他。", mood: 'perplexed' },
+            { speaker: '沈清秋', text: "（内心）他从来都没有打算将真相告诉说出来，他就是想这样一辈子瞒下去！而我也永远都等不到那个答案，哪怕是假的！", mood: 'angry' },
+            { speaker: '旁白', text: "想及此处沈清秋再也压制不住翻涌的气血，一口鲜血生生的呕了出来。", mood: 'narrative', shake: true },
+            { speaker: '旁白', text: "他真的气急了，用手生生的将这用绢布包裹的史册撕成了碎片。", mood: 'narrative', shake: true },
+            { speaker: '沈清秋', text: "（眼红）这一定和岳清源以剑入命有关！", mood: 'angry' },
+            { speaker: '旁白', text: "沈清秋抹了一把嘴角渗出的鲜血，就直接御剑杀到了穹顶峰。", mood: 'narrative' }
+        ],
+        next: 'chapter5'
+    },
+
+    // --- Chapter 5: Breakup and Truth ---
+    'chapter5': {
+        lines: [
+            { speaker: '旁白', text: "【第五章：决裂与真相】", mood: 'narrative', bg: ASSETS.bg.qingjing_night },
+            { speaker: '旁白', text: "现在已经入夜，大典早已结束。沈清秋一身戾气，一路上无人敢拦，谁见了都是退避三舍，哪怕是岳清源的大弟子书砚都没敢阻拦。", mood: 'narrative' },
+            { speaker: '旁白', text: "书砚看着一身戾气面色极其阴沉的沈师叔，匆忙赶来连常服都没换，手上提着配剑，直奔自家师尊寝殿，他有一种沈师叔是来取师尊向上人头的错觉。", mood: 'narrative' },
+            { speaker: '书砚', text: "（默默掏出传讯玉牌报信）师尊，沈师叔深夜来访！", mood: 'worried' },
+            { speaker: '旁白', text: "岳清源寝殿的灯火还亮着，正坐在茶几旁看书，刚收到书砚给他发的传讯还没来得及看，寝殿的门砰！一声巨响就被人一脚踹开。", mood: 'narrative', shake: true },
+            { speaker: '旁白', text: "放眼整个苍穹山派能这么来找岳清源的除了沈清秋，没有第二人了。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋能来找他，岳清源是惊喜的，哪怕对方此刻一身戾气臭着一张俊脸，提着剑来，一副要取他向上人头的错觉。他也是惊喜的。", mood: 'narrative' },
+            { speaker: '旁白', text: "比起沈清秋对着他假意作态，还是这个样子，更鲜活一些。是以对方虽然是踹门进来的，岳清源也没有任何生气的迹象，反而眼底潜藏着惊喜。将手上的书本放到一旁，起身去迎。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋也不像上次一样，只站在在门口，而是大步流星进了房门，甚至用结界将房门封上。", mood: 'narrative' },
+            { speaker: '旁白', text: "这是他与岳清源之间的私事，不喜有外人打扰，也不喜有外人听。", mood: 'narrative' },
+            { speaker: '旁白', text: "看着迎面向他走来的岳清源，沈清秋没有丝毫犹豫的一把拽过他衣领将人重重抵到门上，语气恶狠狠。", mood: 'narrative', shake: true },
+            { speaker: '沈清秋', text: "岳清源，你当初为什么没来接我？", mood: 'angry' },
+            { speaker: '岳清源', text: "……", mood: 'guilty' },
+            { speaker: '旁白', text: "岳清源原本捎带着点喜色的神情一下变得失落起来，心中有千言万语，话到嘴边依旧是那几个字。", mood: 'narrative' },
+            { speaker: '岳清源', text: "……对不起，小九……是我对不起你……", mood: 'sorrow' },
+            { speaker: '旁白', text: "回答他的依旧是岳清源那无用的道歉，沈清秋确信了，岳清源他永远不会告诉自己答案，还不如自己去查。可此刻的沈清秋简直要被气疯了。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）最讨厌你的对不起。我要答案，要解释，为什么回答我的只有对不起？你到底有多对不起我？能把对不起说了整整四年，甚至将真相掩盖，怎么我沈清秋就不配知道答案？就活该被瞒一辈子？", mood: 'angry' },
+            { speaker: '旁白', text: "沈清秋单手抽出修雅，将剑横在岳清源喉间，将喉剑的皮肤贴的很近，原本捏着对方衣襟的手此刻，捏着岳清源下巴强迫岳清源与自己对视。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "岳清源除了对不起，你就没有别的话要对我说了，还是说你我之间只配说这三个字。", mood: 'angry' },
+            { speaker: '旁白', text: "岳清源眼含暗光，声音有些暗哑，终于将心中埋藏多年的话说出了冰山一角。", mood: 'narrative' },
+            { speaker: '岳清源', text: "我会补偿小九，小九想要什么都可以。", mood: 'guilty' },
+            { speaker: '沈清秋', text: "补偿？呵。你就想这么把我打发了，一个破补偿。", mood: 'disdain' },
+            { speaker: '岳清源', text: "（认真）不是一个补偿，是想要什么都可以…没有期限，没有数量，也没有限制。", mood: 'guilty' },
+            { speaker: '旁白', text: "岳清源说罢用手握住沈清秋持剑的手，向自己喉间按了按，又补充了一句。", mood: 'narrative' },
+            { speaker: '岳清源', text: "包括我的命。", mood: 'guilty' },
+            { speaker: '沈清秋', text: "哈！要你的命，有什么用？我还不如要苍穹山派的掌权，掌门能给我吗？不过是拿我在取乐说的跟真的一样。", mood: 'disdain' },
+            { speaker: '旁白', text: "直到岳清源将掌门令，亲手交到沈清秋手上，沈清秋那满脸不屑的表情终于是崩了。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（内心）岳清源真的有病，掌门令都能给，真相说不得。", mood: 'shocked' },
+            {
+                mood: 'narrative',
+                text: "",
+                choice: [
+                    { label: "愤怒的将令牌扔回去", target: "chapter5_duel" },
+                    { label: "冷漠的收下令牌", target: "chapter5_be1" }
+                ]
+            }
+        ]
+    },
+
+    // --- Branch A: Duel (Original Path) ---
+    'chapter5_duel': {
+        lines: [
+            { speaker: '旁白', text: "沈清秋将令牌重新塞回岳清源的手中，将对方从门边推开，撤了结界，愤怒的踹开门又走了。", mood: 'narrative' },
+            { speaker: '旁白', text: "真是来也匆匆，去也匆匆。对于沈清秋来说，这一拳真是打到棉花上了。", mood: 'narrative' },
+
+            // Next morning and Duel
+            { speaker: '旁白', text: "第二日清晨，沈清秋坐在竹舍正对门的太师椅上。", mood: 'narrative', bg: ASSETS.bg.bedroom_day },
+            { speaker: '旁白', text: "他没去晨会，原因很简单，他现在根本不想见到岳清源，至于其他峰主会怎么编排，已经无所谓了。", mood: 'narrative' },
+            { speaker: '旁白', text: "他在思考找一个什么样的理由进入灵犀洞，不被岳清源察觉到异样。", mood: 'narrative' },
+            { speaker: '旁白', text: "一个时辰后，岳清源的大弟子书砚来了，他跪在在沈清秋面前，将掌门令双手举过头顶呈给沈清秋。", mood: 'narrative' },
+            { speaker: '书砚', text: "令牌是今早晨会决定的，师尊亲自让弟子给沈师叔送来。", mood: 'neutral' },
+            { speaker: '旁白', text: "言外之意便是，岳清源以力排众议，这令牌沈清秋拿的光明正大。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（冷笑，反常的收了令牌）退下吧！回去记得告诉你师尊，这补偿我很喜欢。", mood: 'disdain' },
+            { speaker: '书砚', text: "是。", mood: 'worried' },
+            { speaker: '旁白', text: "书砚听的一抖，迅速起身，撒丫子就跑。内心不由诉苦水，师尊与沈师叔两人生气，老拿他在中间磨算什么？", mood: 'narrative' },
+            { speaker: '旁白', text: "是日午时，柳清歌收到了沈清秋的拜帖。", mood: 'narrative' },
+            { speaker: '柳清歌', text: "（内心）若换作往常我是绝对不会去的，可今日不同。今早晨会掌门师兄竟为了沈清秋这卑鄙小人将众人堵得哑口无言，甚至连掌门令都交了出去。", mood: 'angry' },
+            { speaker: '旁白', text: "见面后柳清歌和沈清秋一言不合打起来了。", mood: 'narrative' },
+            { speaker: '旁白', text: "两人交手，剑光闪烁。柳清歌一个回旋，剑尖画出一道伶俐的弧线，猛然刺向沈清秋。沈清秋反应迅速，一记反挡，剑与剑之间碰撞出火花。金属碰撞的尖锐声音在空气中回荡，剑与剑的交锋，瞬间点燃了紧张的气氛。", mood: 'narrative' },
+            { speaker: '旁白', text: "有道是城门失火，殃及池鱼。看着师尊和柳师叔打起来的明帆，速速通知了岳清源。", mood: 'narrative' },
+            { speaker: '旁白', text: "岳清源赶来的很快，但也快不过他们两个人此时已经必现的杀招，两人身形快速移动，变化攻势，剑法一气呵成。", mood: 'narrative' },
+            { speaker: '旁白', text: "岳清源瞬身来到两人中间，打算以修为强压下二人的剑意。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋与柳清歌二人看到强行横在中间的岳清源，柳清歌已经来不及收手了，带着灵力和剑意直直的刺了过去。", mood: 'narrative' },
+            { speaker: '旁白', text: "不过还好，岳清源修为高还是强压下了很多剑意和裹杂过来的灵力这下虽然会让他受伤，但也不至于伤重。", mood: 'narrative' },
+            { speaker: '旁白', text: "而沈清秋则是不同，硬生生的拐了个弯剑气回流，劈向峰顶峰顶留下了深深的沟壑，被剑气逆流冲击的经脉可伤的不轻。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋像是脱了力，从半空径直向下坠去。", mood: 'narrative', shake: true },
+            { speaker: '沈清秋', text: "（看到岳清源满脸担忧向他飞速飞来的身影）（意识模糊）计划成了。", mood: 'neutral' },
+            { speaker: '旁白', text: "两峰峰主公然斗殴，这一战柳清歌被罚禁闭，沈清秋则是内伤过重，入灵犀同闭关修养。", mood: 'narrative' },
+
+            // Truth revealed in Lingxi Cave
+            { speaker: '旁白', text: "一时之间，苍穹山派内部的八卦真是被这三位点燃了。", mood: 'narrative', bg: ASSETS.bg.lingxicave },
+            { speaker: '岳清源', text: "（内心）这两天，清秋的举动实在是太异常了。左思右想，始终不得其解。", mood: 'worried' },
+            { speaker: '岳清源', text: "（内心）难道从收下掌门令开始，他就是为了重伤修养？或者说……仅仅是为了避开我？", mood: 'worried' },
+            { speaker: '旁白', text: "灵犀洞是岳清源最不愿意来的地方，毕竟曾经苦禁在这里，只要靠近这里像是飞鸟入了牢笼，再也无法逃脱的一样。", mood: 'narrative' },
+            { speaker: '旁白', text: "沉闷的压抑感笼罩在岳清源心头，可他还是一直往里走，寻找着那个青衣身影，开放洞府他都找了，都没有找到他想见的人，除了前不久被他封禁的地方。", mood: 'narrative' },
+            { speaker: '旁白', text: "心中陡然升起一股心慌，手指掐决缩地成影一瞬就来到了被他封禁的洞府前，封禁结界未破，可他分明感受到了结界中有人。", mood: 'narrative' },
+            { speaker: '旁白', text: "迅速入了结界内，一股子血腥味瞬间弥漫上来，洞府中刻满了染血的灵篆，沈清秋一身青衣染上大片大片褐色的斑驳盘腿坐在石阶上，耳目口三窍皆往出渗血。", mood: 'narrative' },
+            { speaker: '旁白', text: "坐在石阶上的人似乎还有些意识，轻眨了一下满是血泪的眼，看向岳清源的方向，扯出了一个苦涩无比的笑容，混着脸上的血与泪看起来可脆弱极了。", mood: 'narrative' },
+            { speaker: '旁白', text: "岳清源上前想为沈清秋疗伤，可只是刚靠近就被对方以掌门令所控无法动弹，压在了石阶之上。", mood: 'narrative', shake: true },
+            { speaker: '旁白', text: "视角晃动沈清秋坐在岳清源腰身上，死死的压着对方，掰开对方的嘴，将一张仙品吐真符一下子塞了进去，转而又用捆线索将人给捆了。", mood: 'narrative' },
+            { speaker: '旁白', text: "完成这些只是一息的功夫，掌门令也只能压制岳清源这一息的时间，不过，对于沈清秋来说，足够了。", mood: 'narrative' },
+            { speaker: '旁白', text: "他内伤很重，急需治疗，可今日就算是死，他也要把岳清源的嘴撬开。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "岳清源，你凭什么不告诉我，你来接过我！", mood: 'angry', shake: true },
+            { speaker: '沈清秋', text: "你凭什么不告诉我，你在灵犀洞走火入魔，以剑入命，废功重来！", mood: 'angry', shake: true },
+            { speaker: '沈清秋', text: "你凭什么不告诉我，你在灵犀洞差点去了一条命！", mood: 'angry', shake: true },
+            { speaker: '沈清秋', text: "岳清源你凭什么瞒着我！说啊！凭什么？", mood: 'angry', shake: true },
+            { speaker: '旁白', text: "沈清秋伤的太重，情绪过激气血翻涌，每说一句话都带着浓重的血腥味，最后一句话几乎是吼出来的，血红着眼，神态及颠又狂。", mood: 'narrative' },
+            { speaker: '旁白', text: "岳清源紧咬牙关不肯开口。沈清秋此刻哪会给他这种机会？强硬的掰开身下人的牙关，将右手拇指搭在对方牙关处。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "快说，岳清源你平时不是很爱说吗？现在怎么沉默了？你要是非要硬忍，那就把我的手指咬断。", mood: 'angry' },
+            { speaker: '沈清秋', text: "无所谓的，这点疼我还是受得了，你不说我就耗死在这。", mood: 'neutral' },
+            { speaker: '旁白', text: "或许是沈清秋耗死在这太刺激岳清源了，或许是符纸起了作用，岳清源终于开口了。", mood: 'narrative' },
+            { speaker: '岳清源', text: "我有什么资格告诉你这些，是我害小九入了秋府，是我没能接到小九，让小九拜了无厌子为师。", mood: 'sorrow' },
+            { speaker: '岳清源', text: "是我推着你一步一步入了歧途。", mood: 'sorrow' },
+            { speaker: '岳清源', text: "我告诉小九这些做什么？博取同情吗？", mood: 'sorrow' },
+            { speaker: '沈清秋', text: "（不可置信）你有病吧？害我入秋府的明明是十五，我们救了他，他却忘恩负义出卖我。", mood: 'shocked' },
+            { speaker: '沈清秋', text: "没接到我，是你没接到我的事。", mood: 'angry' },
+            { speaker: '沈清秋', text: "拜无厌子为师，是我当初眼瞎和你有什么关系？", mood: 'angry' },
+            { speaker: '沈清秋', text: "（内心）他严重怀疑他沈清秋今天哪怕是随便捅死一个人，岳清源都能以自己教导无方把责任揽到自己身上。", mood: 'sorrow' },
+            { speaker: '岳清源', text: "（激动）如果不是我执意要救十五，你又怎么会入秋府？怎么会拜无厌子为师？", mood: 'angry' },
+            { speaker: '沈清秋', text: "（内心）岳清源这个人把在他身上发生的所有的事都揽到了自己身上，那些有关他的无关他的还是和他间接相关的，他统统都揽到自己身上。", mood: 'neutral' },
+            { speaker: '沈清秋', text: "所以你就什么都不告诉我，隐瞒我，让我一直这么不明不白的恨着你。", mood: 'sorrow' },
+            { speaker: '岳清源', text: "（平静）小九，该恨我的。", mood: 'neutral' },
+            { speaker: '旁白', text: "明明促成这些的人那么多，甚至一环扣一环，少一个人都造成不了今天这个局面。岳清源这些错误通通揽到了自己身上。", mood: 'narrative' },
+            { speaker: '旁白', text: "或许从他失约的时候开始，岳清源就将自己狠狠地钉到了耻辱柱上，坦然的接受了沈清秋对他的一切恶意。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋面色苍白，解开了岳清源身上的捆线索，岳清源起身将人抱在怀里，源源不断地输送着灵力，稳住对方的伤势。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋伤的重，刚刚情绪激动真气乱行，又是伤上加伤，眼前阵阵发黑，几乎又要昏过去，可却死死揪着的衣角岳清源不撒手。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "（虚弱）岳清源我恨的只有你为了荣华富贵弃了我，可你没有…还有救你是我自己选的我不会改的。", mood: 'sorrow' },
+            { speaker: '沈清秋', text: "（内心）哪怕历史重演，哪怕时间重来，哪怕知道代价是什么，那时的沈九都会义无反顾的救岳七的。", mood: 'neutral' }
+        ],
+        next: 'chapter6'
+    },
+
+    // --- Branch B: Estranged (Bad Ending 1) ---
+    'chapter5_be1': {
+        lines: [
+            { speaker: '沈清秋', text: "好，既然你给，那我就收着。", mood: 'disdain' },
+            { speaker: '旁白', text: "沈清秋紧紧握住那枚掌门令，指节泛白。他看着面前这个愿意付出一切的男人，心中那团火却渐渐化作了冰冷的灰烬。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "既然我们之间只剩下这些，那便如此吧。从今往后，我们是掌门和峰主。除此之外，再无瓜葛。", mood: 'neutral' },
+            { speaker: '岳清源', text: "小九……", mood: 'sorrow' },
+            { speaker: '旁白', text: "岳清源伸出的手僵在半空，最终无力地垂下。他看到了对方眼中的决绝，那比恨意更让他绝望的，是无边无际的冷漠。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋转身离去，这一次，他没有回头，也没有愤怒的踹门，只是平静地走出了岳清源的世界。", mood: 'narrative' },
+            { speaker: '旁白', text: "自此之后，苍穹山派多了一双公事公办的师兄弟。", mood: 'narrative' }
+        ],
+        next: 'ending_be1'
+    },
+
+    // --- Chapter 6: Clouds Part (Ending) ---
+    'chapter6': {
+        lines: [
+            { speaker: '旁白', text: "【第六章：守得云开】", mood: 'narrative', bg: ASSETS.bg.clinic },
+            { speaker: '旁白', text: "一月后。千草峰。", mood: 'narrative' },
+            { speaker: '旁白', text: "病床上躺着的沈清秋面无血色，嘴唇发白，毫无生机，如果不是还有清浅的呼吸，很难相信这上面躺着的人还活着。", mood: 'narrative' },
+            { speaker: '岳清源', text: "（内心）我怎么都没有想到事情会发生到这种地步，明明只是半日未见，你竟伤得这么重，还险些丧命。", mood: 'sorrow' },
+            { speaker: '岳清源', text: "（内心）洞壁上刻满的问灵符篆，禁书阁被撕毁的史册，还有那日的质问……我现在明白你为何要这么做了。", mood: 'sorrow' },
+            { speaker: '岳清源', text: "（内心）为了一个答案，一个我怎么都不会说的答案。我这一生，似乎都在做令自己后悔的选择。", mood: 'sorrow' },
+            { speaker: '旁白', text: "房门被推开木清芳来复诊，岳清源就坐在沈清秋床边牵着床上人的手，木清芳上前为沈清秋把脉。不一会儿，木清芳便收回手。", mood: 'narrative' },
+            { speaker: '木清芳', text: "用妖丹治愈内伤的法子很好，沈师兄的内伤已经好转很多了，要不了多久就会醒。", mood: 'neutral' },
+            { speaker: '木清芳', text: "掌门师兄也要好好休息，不然到时候沈师兄醒了，你垮了可就不好了。", mood: 'worried' },
+            { speaker: '旁白', text: "岳清源僵硬的点了点头，但还是守在这。木清芳无奈的叹了口气，退下了。", mood: 'narrative' },
+            { speaker: '旁白', text: "沈清秋昏迷中醒来已是第二日清晨是清晨，睁眼便看到了岳清源坐在自己床边，脸上映照着清晨柔和眼中映照的都是自己的身影。", mood: 'narrative' },
+            { speaker: '旁白', text: "躺了一个月，嗓子干哑的可以，想要开口说话，什么都没说出来，便是一串咳嗽。岳清源将沈清秋扶起来顺着气，拿起一杯温水，往他唇边喂。", mood: 'narrative' },
+            { speaker: '旁白', text: "喝了水，嗓子没那么难受了。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "……师兄，我还有一个问题想问。", mood: 'neutral' },
+            { speaker: '旁白', text: "岳清源一双温暖的手捧住沈清秋的手。", mood: 'narrative' },
+            { speaker: '岳清源', text: "小九问吧！这一次，我定知无不言，言无不尽。", mood: 'gentle' },
+            { speaker: '沈清秋', text: "若我什么都不知道一直怨恨你，一直与你疏远。你当如何？", mood: 'neutral' },
+            { speaker: '旁白', text: "这个答案岳清源早就有了，从他隐瞒开始就想好了。", mood: 'narrative' },
+            { speaker: '岳清源', text: "我会一直赎罪，直到你恨意消减，即使小九一辈子都恨我也没关系。我会常伴左右。", mood: 'gentle' },
+            {
+                mood: 'narrative',
+                text: "",
+                choice: [
+                    { label: "回握住他的手", target: "chapter6_he" },
+                    { label: "抽出自己的手", target: "chapter6_be2" }
+                ]
+            }
+        ]
+    },
+
+    // --- Branch A: Happy Ending (Original) ---
+    'chapter6_he': {
+        lines: [
+            { speaker: '岳清源', text: "修仙之人寿命极长，若常伴左右恨便恨吧！", mood: 'gentle', bg: ASSETS.bg.hold_hands }, //双手紧握的CG图
+            { speaker: '旁白', text: "沈清秋回握住岳清源的手，声音低沉。额头贴着对方额头，金色的流光闪过灵脉归主。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "七哥，你说的常伴我左右，别反悔。", mood: 'flush' },
+            { speaker: '岳清源', text: "不反悔的。", mood: 'happy' },
+            { speaker: '旁白', text: "【完】", mood: 'narrative' }
+        ],
+        next: 'ending_he'
+    },
+
+    // --- Branch B: Bad Ending 2 (Unhealable) ---
+    'chapter6_be2': {
+        lines: [
+            { speaker: '旁白', text: "沈清秋并没有说话，而是缓缓地，坚定地将自己的手从岳清源掌心中抽了出来。", mood: 'narrative' },
+            { speaker: '岳清源', text: "小九……？", mood: 'shocked' },
+            { speaker: '沈清秋', text: "晚了。", mood: 'neutral' },
+            { speaker: '旁白', text: "简单的两个字，却如千钧之重。沈清秋闭上了眼，不再看那个满脸错愕与痛苦的男人。", mood: 'narrative' },
+            { speaker: '沈清秋', text: "岳清源，有些事错了就是错了，错过了就是错过了。不是所有的伤口，都能随着时间愈合的。", mood: 'neutral' },
+            { speaker: '旁白', text: "既然选择了隐瞒，那就要承担隐瞒的代价。这代价，就是永远的隔阂，再无修复的可能。", mood: 'narrative' }
+        ],
+        next: 'ending_be2'
+    },
+
+    // --- Ending Transitions ---
+    'ending_he': {
+        lines: [],
+        next: 'ending:ending_he_screen'
+    },
+    'ending_be1': {
+        lines: [],
+        next: 'ending:ending_be1_screen'
+    },
+    'ending_be2': {
+        lines: [],
+        next: 'ending:ending_be2_screen'
+    }
+};
