@@ -100,6 +100,49 @@
             opacity: 1;
         }
 
+        /* --- New Visual Effects --- */
+        /* Silver Energy Stream */
+        .energy-stream {
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to top, transparent, #e0e0e0, transparent);
+            opacity: 0;
+            bottom: -20%;
+            filter: drop-shadow(0 0 5px white);
+            pointer-events: none;
+        }
+
+        @keyframes energy-flow {
+            0% {
+                transform: translateY(0) scaleY(0.2);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-120vh) scaleY(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* White Radial Flash (Blinding Sunlight Effect) */
+        .heavenly-beam {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 15%, rgba(255, 255, 255, 0.6) 35%, rgba(255, 255, 255, 0.3) 55%, transparent 80%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 15;
+            pointer-events: none;
+        }
+
         .fade-exit-active {
             opacity: 0;
             transition: opacity 300ms ease-in;
@@ -755,7 +798,8 @@
                 banquet: './banquethall.png',
                 qingjing_houshan: './qingjing_houshan.png',
                 jinshuge: './jinshuge.png',
-                bamboo_day: './bamboohut_day.png'
+                bamboo_day: './bamboohut_day.png',
+                qiongding_hall: './qiongding_hall.png'
 
             },
             char: {
@@ -900,14 +944,14 @@
             // --- 第三章：继任大典 ---
             'chapter3': {
                 lines: [
-                    { speaker: '旁白', text: "【第三章：继任大典】", mood: 'narrative', bg: ASSETS.bg.start },//要换一个背景
+                    { speaker: '旁白', text: "【第三章：继任大典】", mood: 'narrative', bg: ASSETS.bg.qiongding_hall },
                     { speaker: '旁白', text: "继任大典在穹顶峰大殿之中举行。", mood: 'narrative' },
                     { speaker: '旁白', text: "现如今，穹顶大殿空空荡荡的，只站着12位新继任的峰主，岳清源一人站在高座之上，其他峰主按照排名顺序呈三角形依次站在新任掌门下首，为新任掌门护法。", mood: 'narrative' },
-                    { speaker: '旁白', text: "护山大阵的阵法灵篆浮现在整个穹顶殿中，十二峰主所站着的位置，为阵法的十二阵眼，源源不断的给阵眼汇聚灵力，一时之间整个苍穹山派灵气震荡。", mood: 'narrative', shake: true },
-                    { speaker: '旁白', text: "继任大典其实就是祭天大典。", mood: 'narrative' },
-                    { speaker: '旁白', text: "最强修士以自身灵力融入山灵，聚气成阵，自动庇护这一方天地。融入的灵力越多，护山大灵便越强。", mood: 'narrative' },
-                    { speaker: '旁白', text: "玄肃剑光芒大盛，岳清源周身灵力暴涨，五彩的虚影冲天而起，在空中汇成斑斓的金光。", mood: 'narrative' },
-                    { speaker: '旁白', text: "待金光完全落于阵中，大典也就算成了。", mood: 'narrative' },
+                    { speaker: '旁白', text: "护山大阵的阵法灵篆浮现在整个穹顶殿中，十二峰主所站着的位置，为阵法的十二阵眼，源源不断的给阵眼汇聚灵力，一时之间整个苍穹山派灵气震荡。", mood: 'narrative', shake: true, energy: true },
+                    { speaker: '旁白', text: "继任大典其实就是祭天大典。", mood: 'narrative', energy: true },
+                    { speaker: '旁白', text: "最强修士以自身灵力融入山灵，聚气成阵，自动庇护这一方天地。融入的灵力越多，护山大灵便越强。", mood: 'narrative', energy: true },
+                    { speaker: '旁白', text: "玄肃剑光芒大盛，岳清源周身灵力暴涨，五彩的虚影冲天而起，在空中汇成斑斓的金光。", mood: 'narrative', energy: true, climax: true },
+                    { speaker: '旁白', text: "待金光完全落于阵中，大典也就算成了。", mood: 'narrative', climax: true },
                     { speaker: '旁白', text: "居于下首的沈清秋，怀中那带出的符纸此刻却灼热起来，灼得他胸腔生疼。", mood: 'narrative', shake: true },
                     { speaker: '沈清秋', text: "（不可置信地盯着岳清源）（内心）这震颤……符纸里封着的，竟然是岳清源的灵脉？！", mood: 'shocked' },
                     { speaker: '沈清秋', text: "（按住胸口）（灼热感似乎要将他烧穿）他竟将灵脉与佩剑相绑……难怪岳清源从不轻易拔剑。", mood: 'shocked' },
@@ -1596,21 +1640,21 @@
                 <div class="bg-slate-900 border border-slate-700 p-4 md:p-8 rounded-xl shadow-2xl w-[260px] md:w-[320px] flex flex-col gap-2 md:gap-4 max-h-full overflow-y-auto custom-scroll" onClick=${e => e.stopPropagation()}>
                     <h3 class="text-cyan-400 text-lg md:text-xl font-bold mb-1 md:mb-2 text-center shrink-0">系统菜单</h3>
                     
-                    <button onClick=${onOpenSave} class="w-full p-3 md:p-4 bg-slate-800 hover:bg-cyan-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-cyan-800 tracking-normal font-sans text-center font-bold shrink-0">
+                    <button onClick=${onOpenSave} class="btn-bloom w-full p-3 md:p-4 bg-slate-800 hover:bg-cyan-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-cyan-800 tracking-normal font-sans text-center font-bold shrink-0 relative overflow-hidden">
                         保存记录
                     </button>
 
-                     <button onClick=${onOpenLoad} class="w-full p-3 md:p-4 bg-slate-800 hover:bg-indigo-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-indigo-800 tracking-normal font-sans text-center font-bold shrink-0">
+                     <button onClick=${onOpenLoad} class="btn-bloom w-full p-3 md:p-4 bg-slate-800 hover:bg-indigo-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-indigo-800 tracking-normal font-sans text-center font-bold shrink-0 relative overflow-hidden">
                         读取记录
                     </button>
 
-                    <button onClick=${onOpenSettings} class="w-full p-3 md:p-4 bg-slate-800 hover:bg-emerald-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-emerald-800 tracking-normal font-sans text-center font-bold shrink-0">
+                    <button onClick=${onOpenSettings} class="btn-bloom w-full p-3 md:p-4 bg-slate-800 hover:bg-emerald-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-emerald-800 tracking-normal font-sans text-center font-bold shrink-0 relative overflow-hidden">
                         设置
                     </button>
 
                     <div class="h-px bg-slate-800 my-0 md:my-1 shrink-0"></div>
                     
-                    <button onClick=${onBackTitle} class="w-full p-3 md:p-4 bg-red-900/20 hover:bg-red-900/40 text-red-300 text-sm md:text-base rounded transition-colors tracking-normal font-sans text-center font-bold shrink-0">
+                    <button onClick=${onBackTitle} class="btn-bloom w-full p-3 md:p-4 bg-red-900/20 hover:bg-red-900/40 text-red-300 text-sm md:text-base rounded transition-colors tracking-normal font-sans text-center font-bold shrink-0 relative overflow-hidden">
                         返回标题
                     </button>
                     
@@ -1904,6 +1948,25 @@
             `;
         };
 
+        // Visual Effects Component
+        const VisualEffects = ({ isEnergy, isClimax }) => {
+            const particles = useMemo(() => Array.from({ length: 20 }).map((_, i) => ({
+                left: Math.random() * 100,
+                duration: 1 + Math.random() * 1.5,
+                height: 40 + Math.random() * 40,
+                delay: Math.random() * 2 // stagger start
+            })), []);
+
+            return html`
+                <div class="absolute inset-0 pointer-events-none overflow-hidden z-10">
+                    ${isEnergy && particles.map(p => html`
+                        <div class="energy-stream" style="left: ${p.left}%; height: ${p.height}vh; animation: energy-flow ${p.duration}s ease-in infinite; animation-delay: -${p.delay}s;"></div>
+                    `)}
+                    <div class="heavenly-beam" style="opacity: ${isClimax ? '1' : '0'};"></div>
+                </div>
+            `;
+        };
+
         // --- 主逻辑 ---
         const App = () => {
             // --- 状态与初始化 ---
@@ -1933,6 +1996,8 @@
             const [isShaking, setIsShaking] = useState(false);
             const [isRhythm, setIsRhythm] = useState(false);
             const [isEndingsOpen, setIsEndingsOpen] = useState(false);
+            const [isEnergy, setIsEnergy] = useState(false); // Silver energy lines
+            const [isClimax, setIsClimax] = useState(false); // Golden beam
 
             // 沈清秋立绘缓存（防止淡出时表情闪回neutral）
             const sqq立绘缓存 = useRef(ASSETS.char.sqq.v1);
@@ -2151,6 +2216,19 @@
                     setIsRhythm(true);
                 } else {
                     setIsRhythm(false);
+                }
+
+                // Visual Effects Triggers
+                if (currentLine.energy && !isSkip) {
+                    setIsEnergy(true);
+                } else {
+                    setIsEnergy(false);
+                }
+
+                if (currentLine.climax && !isSkip) {
+                    setIsClimax(true);
+                } else {
+                    setIsClimax(false);
                 }
 
 
@@ -2578,6 +2656,7 @@
                          style="width: min(100%, 177.78dvh); aspect-ratio: 16/9;">
                         
                         <${BackgroundLayer} src=${gameState.bg} />
+                        <${VisualEffects} isEnergy=${isEnergy} isClimax=${isClimax} />
 
                         ${renderContent()}
 
